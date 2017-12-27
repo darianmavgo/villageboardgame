@@ -11,4 +11,4 @@ The original board matched the 40 spaces of the original Monopoly design.  I dow
 * Only single player or multiplayer with people taking turns on the same computer.  
 * No server-side persistence.  Reloading the page completely resets the game.  All progress gets lost.  
 * No secrets for a given player.  Since it's share the computer style there's no secrets between players.
-* 
+* Control panel on the side that allowed for lots of cheats for quick testing of any new game rule.
