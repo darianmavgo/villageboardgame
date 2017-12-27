@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="assets/analytics.js.download" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="assets/iconochive.css">
+
+
+	
+	<title>Village the Game Prototype "Kenya" Doesnt work in Internet Explorer; use Firefox, Safari or Google Chrome</title>
+
+<!-- END OF TAG FOR head SECTION -->
+
+	<link rel="StyleSheet" href="assets/kstyle.css" type="text/css"> 
+	
+<!-- Dependencies --> 
+ <script type="text/javascript" src="assets/gspreadsheet.js.download"></script>
+ <link rel="stylesheet" href="assets/example.css" type="text/css" media="screen"> 
+
+ <script type="text/javascript" src="assets/yahoo-dom-event.js.download"></script>
+ <script type="text/javascript" src="assets/element-beta-min.js.download"></script>
+
+<!-- Drag and Drop source file --> 
+<script type="text/javascript" src="assets/dragdrop-min.js.download"></script>
+
+
+
+</head>
+<body>
+ 
+ <table id="main-wrapper">
+	<tbody><tr>
+	<td id="game-content">
+		<h2 id="topbar" class="vh2"><img src="assets/logo.ico">Village the Game 
+			<input type="button" id="loadbutton" onclick="loaddata();" value="Load Game Data"> 
+			<input type="button" id="startbox" onclick="startGame();setHidden(&#39;startbox&#39;);">
+			<span id="playersales"></span>
+		</h2>
+		<!-- STARTNOTE BEGIN -->
+		<div id="startnote">
+			<h3>Welcome to Village the Game Prototype: "Kenya"</h3>
+			<p>You are an entrepreneur in Kenya starting businesses in your village to improve the lives of the villagers. For example, start Kickstart to sell irrigation pumps to farmers. Start Kiva to help villagers get credit so they can buy your other tools. </p>
+			<h3>How to Win:</h3>
+			<p>Have the most sales revenue once all the villager needs have been met. </p>
+			<h3>How to Play</h3>
+			<p>Each Player rolls dice to move around the village. During your turn, if you land on a business you can start that business.
+				When your opponents land on your business they buy tools and services from your business and use them to improve the village.  
+				If you get all the businesses of the same color, you can upgrade your businesses and make the village even stronger.
+			</p>
+			<h3>Turn Order</h3>
+			 <ol>
+				<li>Roll dice to see where you land.</li>
+				<li>If you land on an unowned business, buy it or let another player start it.</li>
+				<li>If you land on a Villager space, find out what the Villagers need.</li>
+				<li>If you land on a News space, find out what is happening in the Village</li>
+				<li>Trade money and businesses with other players</li>
+				<li>Buy and Sell upgrades</li>
+				<li>End Turn</li>
+			 </ol>
+			<h3>Notes: </h3>
+			<p>There isn't real multiplayer support yet.  You and friends have to play it together on one computer. </p>
+			<h3>Warning: </h3>
+			<p>If you refresh your browser, the current game will be erased. </p>
+			<p>*"Kenya" does not work in Internet Explorer; use <a href="http://www.mozilla.com/en-US/firefox/">Firefox</a>, <a href="http://www.apple.com/safari/download/">Safari</a> or <a href="http://www.google.com/chrome/index.html">Google Chrome</a>. Thank you!* </p>
+			
+			
+			<div class="obviousbuttons">
+				<input type="button" id="loadbutton2" onclick="loaddata();" value="Load Game Data"> 
+				<input type="button" id="startbox2" onclick="startGame();setHidden(&#39;startbox&#39;);setHidden(&#39;startbox2&#39;);">
+			</div>
+			
+		</div> 
+		<!-- STARTNOTE END -->
+		
+		<!-- Boardwrapper BEGIN -->
+		<div id="boardwrapper">
+		<!-- <h2 class="vh2">Village the Game 1.0 "Kenya"</h2> -->
+		<!-- BOARD1 BEGIN -->
+		<div id="board1">
+			 <table id="boardtoprow">
+			 <tbody><tr>
+				<td class="space" id="space7"></td>
+				<td class="space" id="space8"></td>
+				<td class="space" id="space9"></td>
+				<td class="space" id="space10"></td>
+				<td class="space" id="space11"></td>
+			
+			 </tr>
+			 <tr id="vmidsection">
+				<td id="boardleftcolumn">
+					
+					<div class="space" id="space6"></div>
+					<div class="space" id="space5"></div>
+					
+				</td>
+				<td colspan="3" id="boardmidsection">
+					
+				</td>
+				<td id="boardrightcolumn">
+					<div class="space" id="space12"></div>
+					<div class="space" id="space13"></div>
+				</td>
+			 </tr>
+			 <tr id="boardbottomrow">
+		
+				<td class="space" id="space4"></td>
+				<td class="space" id="space3"></td>
+				<td class="space" id="space2"></td>
+				<td class="space" id="space1"></td>
+				<td class="space" id="space0"></td>
+			 </tr>
+			 </tbody></table>
+		</div>
+		<!-- BOARD1 END -->
+
+		<!-- HUD -->
+		<div id="hud">
+			<!-- DIVMSG -->
+				<div id="divmsg">
+					<table>
+						<tbody><tr>
+						<td id="divmsgwrapper">
+							
+						</td>
+
+						<td>
+							<input id="msgok" value="x" onclick="closemsg();" type="button">
+						</td>
+						</tr>
+					</tbody></table>
+				</div>
+			<!-- DIVMSG END-->	
+			<table>
+				<tbody><tr>
+					<td>
+						<table id="turnpanel">
+							<tbody><tr>
+								<td><input style="visibility: visible;" id="startturn" onclick="rollDice();" value="Roll Dice (0)" type="button">
+									<input id="finishturnbutton" onclick="endTurn();" style="visibility: hidden;" value="End Turn" type="button">		
+								</td>
+								<td>
+									<input id="upgradebutton" onclick="upgrade();" style="visibility: hidden;" value="Upgrade" type="button">
+									<input id="sellupgradebutton" onclick="startSellUpgrade();" style="visibility: hidden;" value="Sell Upgrade" type="button">
+									<input style="visibility: hidden;" id="tradebutton" onclick="trade();" value="Trade" type="button"> <div style="visibility: hidden;" id="tradeoptions"> </div>
+								</td>
+							</tr>
+						</tbody></table>
+						
+					</td>
+					<td id="detailwindow">
+						<form id="mover">
+							<div id="playertabswrapper" class="tabber">		
+							</div>
+						</form>
+						
+					</td>
+				</tr>
+			</tbody></table>
+		</div><!-- HUD END -->
+	</div>
+	<div id="infowindow">
+		
+	</div>
+	
+	</td><!--id="game-content"-->
+	<td id="game_ads">
+		<h2 class="vh2">Ads</h2>
+		<!-- PUT THIS TAG IN DESIRED LOCATION OF SLOT BlogPageMREC
+			 -->
+		<script type="text/javascript">
+		  GA_googleFillSlot("BlogPageMREC");
+		</script>
+		  
+		<!-- END OF TAG FOR SLOT BlogPageMREC
+			 -->
+			 
+		<!-- CONTROLPANEL -->
+			<div id="controlpanel">
+				<h2 class="vh2">Control Panel <b class="button" onclick="setHidden(this.parentNode.parentNode)">[x]</b></h2>
+				<span onclick="giveAll();">[Give All]</span>
+				<span onclick="givePumps();">[Give Pumps]</span>
+				<span onclick="tabberAutomatic();">[Tabber]</span>
+				<span onclick="animatemove(2, 9, &#39;Fish&#39;);">[Show Fish Moving]</span>
+				<span onclick="loaddata();">[Load Deeds, Cards, Colors]</span>
+				<span onclick="alert(netWorth(&#39;Fish&#39;));">[Networth Fish]</span>
+				<span onclick="allButHealthCities();">[Own all but HealthyCities]</span>
+				<span onclick="removePlayer(&#39;Fish&#39;)">[Remove Fish]</span>
+				<span onclick="burnFishBear();">[Burn FishBear]</span>
+				<span onclick="buildBoard();">[Build Board]</span>
+				<span onclick="indexTable();">[Index Table]</span>
+				<span onclick="buildDeeds();">[Build Deeds]</span>
+				<span onclick="makeMonopoly(1,&#39;Fish&#39;);">[Make Monopoly(1, 'Fish')]</span>
+				<span onclick="sellUpgrade(2);">[Sell Upgrade(2)]</span>
+				<span onclick="testDeedList(&#39;Fish&#39;);">[MakeDeedList('Fish')]</span>
+				<span onclick="buyUpgrade(4);">[Buy Upgrade (4)]</span>
+				<span onclick="buildMonoHash();">[Build Monopoly Hash]</span> 
+				<span onclick="buildCards();">[Build Cards]</span>
+				
+				  <table>
+				
+				  <tbody><tr>
+					<td>
+					  <h2 class="vh2">Roll</h2>
+					  <span onclick="rollDice([1]);">[1]</span>
+					  <span onclick="rollDice([2]);">[2]</span>
+					  <span onclick="rollDice([3]);">[3]</span>
+					  <span onclick="rollDice([4]);">[4]</span>
+					  <span onclick="rollDice([5]);">[5]</span>
+					  <span onclick="rollDice([6]);">[6]</span>
+					</td>
+					<td>
+					</td>
+					<td id="errorlog"> </td>
+					<td> VillagerCards 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 1);">[1]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 2);">[2]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 3);">[3]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 4);">[4]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 5);">[5]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 6);">[6]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 7);">[7]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 8);">[8]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 9);">[9]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 10);">[10]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 11);">[11]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 12);">[12]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 13);">[13]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 14);">[14]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 15);">[15]</span> 
+					<span onclick="showVillagerCard(getCurrentPlayer(), 16);">[16]</span> 
+					</td>
+					<td> NewsCards <span onclick="showNewsCard(getCurrentPlayer(), 1);">[1]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 2);">[2]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 3);">[3]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 4);">[4]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 5);">[5]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 6);">[6]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 7);">[7]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 8);">[8]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 9);">[9]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 10);">[10]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 11);">[11]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 12);">[12]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 13);">[13]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 14);">[14]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 15);">[15]</span>
+					<span onclick="showNewsCard(getCurrentPlayer(), 16);">[16]</span>
+					</td>
+				  </tr>
+				
+				  </tbody></table>
+			</div>
+			<!-- CONTROLPANEL END -->	 
+	</td><!--id="game_ads"-->
+	<td id="facebook_ads_container">
+		<h2 class="vh2">Facebook Ads</h2>
+		
+		<div id="facebook_ads">
+				
+			<!-- OFFSCREEN -->
+			<div id="offscreen">
+				<h2 class="vh2"> OffScreen </h2>
+				<!-- Put stuff here for storage when it's off screen like button's the the user can't click -->
+				
+			</div>
+			
+		</div><!-- facebooc_ads-->
+	</td><!--id="facebook_ads_container"-->
+	
+	</tr>
+ </tbody></table>
+ <!-- END main-wrapper -->
+<!-- Boardwrapper END -->
+
+
+	
+
+<!-- TURN WRAPPER -->
+<div id="turnwrapper">	
+	<div id="popupbox">
+		<div id="winbox"></div>
+		<!-- deed, card, auction, trade, bankruptcy box go here -->
+		<!-- DEEDBOX -->
+		<div id="deedbox"></div>
+		<!-- DEEDBOX END -->	
+		<!-- VILLAGERBOX -->
+		<div id="villagerbox"></div>
+		<!-- VILLAGERBOX END -->
+		<!-- newsbox -->
+		<div id="newsbox"></div>
+		<!-- newsbox END -->
+		<div id="upgradewindow">
+			<h2 class="vh2">Upgrades</h2>
+			<div id="uppropview"></div>
+			<div id="upbuttonpanel"><input type="button" id="finishupgradebutton" onclick="finishUpgrade();" value="Finish Upgrade(s)"></div>
+		</div>
+		<div id="supgradewindow">
+			<h2 class="vh2">Sell Upgrades</h2>
+			<div id="suppropview"></div>
+			<div id="supbuttonpanel"><input type="button" id="finishsellupgradebutton" onclick="finishSellUpgrade();" value="Finish Selling Upgrade(s)"></div>
+		</div>
+		
+		<div id="brokepanel">
+			<h2 class="vh2" id="brokepaneltitle">Sell, Trade or Declare Bankruptcy</h2>
+			<!--
+			<input type="button" id="brokepanelsellupgradebutton" value="Sell Upgrade" onclick="startSellUpgrade(globals.broke);"/>
+			-->
+			<input type="button" id="brokepanelbankruptcybutton" value="Declare Bankruptcy" onclick="bankruptcy(globals.broke, globals.owed);">
+		</div>
+
+		
+		<!-- TRADETABLE BEGIN -->	
+		<div id="tradebox">
+			<h2 class="vh2">Trade</h2>
+			<table id="tradetable">
+				<tbody><tr> 
+				<td class="owned"><!-- Player 1 Side -->
+						<h3><span id="owner1"></span> can offer</h3>
+						<div><input type="button" value="+$10" onclick="upOffer(1,10);">
+							<input type="button" value="+$100" onclick="upOffer(1,100);">
+							<input type="button" value="+$500" onclick="upOffer(1,500);">
+						</div>
+						<div>Up to $<span id="owner1cash"></span></div>
+						<ul id="owned1">
+						</ul>
+				</td> <!-- Player 1 Side End -->
+				<td class="owned"><!-- Player 2 Side -->
+						<h3><span id="owner2"></span> can offer</h3>
+						<div>
+							<input type="button" value="+$10" onclick="upOffer(2,10);">
+							<input type="button" value="+$100" onclick="upOffer(2,100);">
+							<input type="button" value="+$500" onclick="upOffer(2,500);">
+						</div>
+						
+						<div>Up to $<span id="owner2cash"></span></div>
+						<ul id="owned2">
+						</ul>
+				</td><!-- Player 2 Side End -->
+				</tr>
+				<tr>
+				<td>
+					<div class="kselected">
+						<h3><span id="offerowner1"></span> is offering</h3>
+						<div>$<span id="cashoffer1">0</span></div>
+						<ul id="selected1"></ul>
+					</div>
+				</td>
+				<td>
+					<div class="kselected">
+						<h3><span id="offerowner2"></span> is offering</h3>
+						<div>$<span id="cashoffer2">0</span></div>
+						<ul id="selected2"></ul>
+					</div>
+				</td>
+				</tr>
+				</tbody>
+			</table>
+			<input type="button" id="accepttradebutton" value="Accept Trade" onclick="acceptTrade();">
+			<input type="button" value="Reset" onclick="resetTrade();">
+			<input type="button" id="canceltradebutton" value="Cancel" onclick="cancelTrade();">
+		</div>
+			
+		<!-- AUCTION TABLE BEGIN -->										
+		<div id="auctiontable">
+		  <h2 class="vh2" id="auctiontitle">Auction</h2>
+		  <table>
+			  <tbody><tr>
+				<td id="deeddisplay">Deed</td>
+				<td>
+					Top Bidder: <span id="topbidder"></span><br>
+					Top Bid: $<span id="topbid"></span> 
+					  <table id="biddingpanel">
+					
+					  <tbody><tr>
+						<td id="bidder1">
+						</td><td id="bidder2">
+						</td><td id="bidder3">
+						</td><td id="bidder4">
+					  </td></tr>
+					  <tr>
+						<td>$<span id="bid1">0</span></td>
+						<td>$<span id="bid2">0</span></td>
+						<td>$<span id="bid3">0</span></td>
+						<td>$<span id="bid4">0</span></td>
+					  </tr>
+					  <tr>
+						<td> <input type="button" value="+$10" onclick="upBid(1, 10);"></td>
+						<td> <input type="button" value="+$10" onclick="upBid(2, 10);"></td>
+						<td> <input type="button" value="+$10" onclick="upBid(3, 10);"></td>
+						<td> <input type="button" value="+$10" onclick="upBid(4, 10);"></td>
+					  </tr>
+					  <tr>
+						<td> <input type="button" value="+$50" onclick="upBid(1, 50);"></td>
+						<td> <input type="button" value="+$50" onclick="upBid(2, 50);"></td>
+						<td> <input type="button" value="+$50" onclick="upBid(3, 50);"></td>
+						<td> <input type="button" value="+$50" onclick="upBid(4, 50);"></td>
+					  </tr>
+					  <tr>
+						<td> <input type="button" value="+$100" onclick="upBid(1, 100);"></td>
+						<td> <input type="button" value="+$100" onclick="upBid(2, 100);"></td>
+						<td> <input type="button" value="+$100" onclick="upBid(3, 100);"></td>
+						<td> <input type="button" value="+$100" onclick="upBid(4, 100);"></td>
+					  </tr>
+							</tbody>
+						</table>
+						<input type="button" id="finishauctionbutton" onclick="finishAuction();" value="Finish Auction">
+					</td>
+				</tr>
+				
+				</tbody>
+			</table>
+			
+		</div>
+		<!-- AUCTION TABLE END -->										
+		<!-- BUYWINDOW -->
+		<table id="buywindow">
+			<tbody><tr>
+				<td>
+					<input type="button" onclick="buyDeed(globals.currentdeed);" id="buybutton" value="Start">
+				</td>
+				<td>
+					<input type="button" onclick="auctionDeed(globals.currentdeed);" id="auctionbutton" value="Auction">
+				</td>
+			</tr>
+		</tbody></table>
+		<!-- BUYWINDOW -->
+		<!-- PRODUCEWINDOW -->
+		<table id="producewindow">
+			<tbody><tr>
+				<td>Produce :
+				</td>
+				<td>
+					<input type="button" onclick="produce(globals.selectedbiz, 1)" value=" 1 ">
+				</td>
+				<td>
+					<input type="button" onclick="produce(globals.selectedbiz, 5)" value=" 5 ">
+				</td>
+				<td>
+					<input type="button" onclick="produce(globals.selectedbiz, 10)" value=" 10 ">
+				</td>
+				<td>
+					<input type="button" onclick="produce(globals.selectedbiz, 50)" value=" 50 ">
+				</td>
+			</tr>
+		</tbody></table>
+		<!-- PRODUCEWINDOW -->
+		</div>	
+	</div> <!--PopupBox END -->
+	
+
+
+
+	
+ 
+<!-- DATA --> 
+<div id="data">
+	<span id="buyauctionhelp">If you don't want to start the business, it will automatically go up for auction.</span>
+	<span id="tradehelp">You can offer other players cash and businesses in exchange for their cash or businesses.</span>
+	<span id="upgradehelp">Now that you own all the businesses of the same color you can upgrade them.</span>
+	<span id="sellupgradehelp">If you need money now, you can sell upgrades for half price.</span>
+	<span id="bankruptcyhelp">When you run out of cash and assets you must declare bankruptcy. Sorry.</span>
+	<span id="newshelp">News causes something to happen in the village.</span>
+	<span id="villagerhelp">Villagers help you learn what is going on in the lives of villagers.</span>
+
+	<span class="score" id="bankscore">1000400</span>
+	<!-- PLAYERTEMPLATE -->
+	
+	<div id="playertemplate">
+		<div class="tabbertab">
+			<h2>PLAYERNAME1</h2>
+			<table id="PLAYERID1">
+				<tbody><tr>
+					<td>
+						<img class="profilepic" src="assets/PROFILEPIC">
+					</td>
+					<td>
+						<input class="radio" id="PLAYERID2Radio" name="player" value="PLAYERID3" type="radio">
+						<img class="playericon" src="assets/TOKENURL" alt="PLAYERNAME2">
+						$<span class="score" id="PLAYERID4score">PLAYERCASH</span><br>
+						Sales: $<span class="sales" id="salesPLAYERID7">PLAYERSALES</span>
+					</td>
+					<td id="controlsPLAYERID5">
+					</td>
+					<td id="inventoryboxPLAYERID6">
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	
+	<!-- DEEDTEMPLATE -->
+	<div id="deedtemplate">
+		<div class="deed" id="IDdeed">
+		<h2 class="vh2" style="background-color: WHITE;">TITLE<span class="close" id="IDclosebutton" onclick="hideDeed(&#39;closeID&#39;);hideInfo();">[x]</span></h2>
+		<table><tbody><tr>
+			<td class="deedimage"><img src="assets/DEEDIMAGE">
+			</td>
+			<td class="deedproperties"> 
+				<div>Sells</div>
+				<div>Quantity</div>
+				<div>Unit Price </div>
+				<div>Total Sale </div>
+				<div> </div>
+				<div> </div>
+			</td>
+			<td class="deedvalues">
+				<div>TYPE</div>
+				<div>QUANTITY </div>
+				<div>UNITPRICE</div>
+				<div>TOTALSALE</div>
+				<div></div>
+				<div></div>
+			</td>
+		</tr></tbody></table>
+		 <p class="deedscription">DESCRIPTION</p>
+		</div>
+	</div>
+	<!-- DEEDTEMPLATE -->
+	<!-- Inventory Template -->
+	<div id="inventorytemplate">
+		<table class="inventorytable">
+			<tbody><tr>
+				<td class="invlabel">LABEL1(s)</td><td class="invquant">QUANT1</td>
+				<td class="invlabel">LABEL2(s)</td><td class="invquant">QUANT2</td>
+				<td class="invlabel">LABEL3(s)</td><td class="invquant">QUANT3</td>
+			</tr>
+			<tr>
+				<td class="invlabel">LABEL4(s)</td><td class="invquant">QUANT4</td>
+				<td class="invlabel">LABEL5(s)</td><td class="invquant">QUANT5</td>
+				<td class="invlabel">LABEL6(s)</td><td class="invquant">QUANT6</td>
+			</tr>
+			<tr>
+				<td class="invlabel">LABEL7(s)</td><td class="invquant">QUANT7</td>
+				<td class="invlabel">LABEL8(s)</td><td class="invquant">QUANT8</td>
+				<td class="invlabel">LABEL9(s)</td><td class="invquant">QUANT9</td>
+			</tr>
+		</tbody></table>
+	</div>
+	
+	<!-- Inventory  Template END -->
+	
+	<!-- VillagerCardTemplate -->
+	<div id="villagercardtemplate">
+		<div id="villagercardID" class="villager">
+			<h2 class="vh2">Villager <div id="villagercardclosebuttonID" class="close" onclick="villagercard2(getCurrentPlayer(), 999 );">[x]</div></h2>
+			<p>CARDMESSAGE</p>
+		</div>
+	</div>
+    <!-- VillagerCardTemplate END-->
+	<!-- NewsCardTemplate -->
+	<div id="newscardtemplate">
+		<div id="newscardID" class="news">
+			<h2 class="vh2">News <div id="newscardclosebuttonID" class="close" onclick="newscard(getCurrentPlayer(), 999 );">[x]</div></h2>
+			<p>CARDMESSAGE</p>
+		</div>
+	</div>
+	<!-- NewsCardTemplate END-->
+	<!-- UpgradeTemplate -->
+	<div id="upgradelistitemtemplate">
+		<li> <input type="button" class="button button2" onclick="buyUpgrade(999);" style="background-color:WHITE;" id="PLAYERdeedID" value="Upgrade TITLE for $UPPRICE"></li>
+	</div>	
+	<!-- UpgradeTemplate -->
+	
+	<div id="deedstablewrapper">
+		<!-- DEEDSTABLE -->
+		
+		<!-- DEEDSTABLE END -->
+	</div>
+	<!-- NEWS TABLE -->
+	<div id="newstablewrapper">
+	</div>
+	<!-- NEWS TABLE END --> 
+	<!-- VILLAGER TABLE -->
+	<div id="villagertablewrapper">
+	</div>
+	 <!-- VILLAGER TABLE END -->
+	 
+	<!-- PLAYER TABLE -->
+	<div id="playertablewrapper">
+	</div>
+	 <!-- PLAYER TABLE END -->
+		
+	<!-- COLOR TABLE BEGIN -->
+	<div id="colortablewrapper">
+	</div>
+	<!-- COLOR TABLE END -->    
+	
+<!-- DATA END -->    
+<!-- Notes -->
+
+<div id="notes">
+<h2 class="vh2">Village Board Game 0.02</h2>
+
+<span>(29 March 2008) The CSS and Javascript are updated to work with IE, Safari, in addition to Firefox 2+. Mind you this is all tested on Windows.  If Mac users out there are having 
+issues let us know: boardgame1 [at] villagethegame.com.</span>
+<span>Most of the rules are based on Monopoly type rules. The gameboard is smaller and you only roll one die.</span>
+<p>Send Feedback: boardgame1 [at] villagethegame.com</p>
+<p id="donate">Support Development of this Prototype:
+</p><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_donations">
+<input type="hidden" name="business" value="donate@villagethegame.com">
+<input type="hidden" name="item_name" value="Fund Village the Game">
+<input type="hidden" name="no_shipping" value="0">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="tax" value="0">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="bn" value="PP-DonationsBF">
+<input type="image" src="assets/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="assets/pixel.gif" width="1" height="1">
+</form>
+</div>
+
+
+
+</div> <!-- END MAIN-WRAPPER -->
+
+<script type="text/javaScript" src="assets/kscript.js.download"></script>
+<script type="text/javascript">
+var tabberOptions = {manualStartup:true};
+</script>
+<script type="text/javascript" src="assets/tabber.js.download">
+</script>
+<!-- Village Google Analytics -->
+<script src="assets/urchin.js.download" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1846829-1";
+urchinTracker();
+</script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl./" : "http://www./");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="assets/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5656121-1");
+pageTracker._trackPageview();
+</script>
+
+</body></html>
