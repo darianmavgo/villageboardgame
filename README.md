@@ -1,6 +1,11 @@
 # Village Board Game "Kenya" 
 In 2009 and some of 2010, I built a board game. Unfortunately the core javascript of the game is missing still.  In the kenya.html file you will find all of the templates for every dialog in the game.  I'm also adding the google sheets that contains all the settings for each spot on the village board. 
 The original board matched the 40 spaces of the original Monopoly design.  I downsized the board to 20 spaces to better fit on the screen at the time.  
+# Found
+* Deeds table google sheet.  I've committed it as csv. This details the all properties of each space on the Village board.  
+* Cards table google sheet.  I've committed it as csv.  This details all the cards that can happen during gameplay.  
+* Village globals google sheet. I've committed it as csv. I created a sheet that javascript feeds into a globals object and uses throughout gampeplay.  
+* Courtesy of Internet Archive I found the slightly butchered original prototype html, committed to this project as kenya.html. 
 
 # Still Missing 
 * main style sheet
