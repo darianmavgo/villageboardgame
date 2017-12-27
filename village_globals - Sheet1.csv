@@ -1,0 +1,45 @@
+name,value
+tutorialmode,false
+startturn,get('startturn')
+dmov,get('mover')
+endturn,get('finishturnbutton')
+errorlog,get('errorlog')
+divmsg,get('divmsg')
+buy,get('buybutton')
+auction,get('auctionbutton')
+monohash,[]
+donehash,[]
+rollPayment,[]
+villagerorder,"[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]"
+newsorder," [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]"
+draggables,[]
+rollarray,"['1,1','1,2','1,3','1,4','1,5','1,6','2,1', '2,2', '2,3', '2,4','2,5','2,6','3,1', '3,2', '3,3', '3,4','3,5','3,6','4,1', '4,2', '4,3', '4,4','4,5','4,6','5,1', '5,2', '5,3', '5,4','5,5','5,6','6,1', '6,2', '6,3', '6,4','6,5','6,6']"
+trader,
+state,
+auctiondeedid,
+currentplayer,"""Fish"""
+currentdeed," """""
+cardlimit,15000
+deeddelay,1500
+carddelay,800
+auctionlimit,60
+turnlimit,40
+upgradelimit,40
+tradelimit,40
+seconds,20
+bankruptlimit,20
+buyorauctionlimit,20
+rolllimit,10
+endturntime,0
+numspaces,0
+villagerindex,0
+newsindex,0
+loading,true
+villagercardkey,pCRoTBbGNNnW0xL6WVPnuVQ
+newscardkey,
+deedstablekey,pCRoTBbGNNnWw9_3y1lzbBA
+playertablekey,
+colortablekey,pCRoTBbGNNnVpesCSdloyLA
+inventory,[]
+buyWhat,[]
+needs,[]

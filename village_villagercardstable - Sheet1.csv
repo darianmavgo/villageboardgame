@@ -1,0 +1,12 @@
+ ,Villager Cards,fromBank,toBank,fromPlayers,toPlayers,move,moveto,payperFranchise,payperMegamart,rollMultiple,rentMultiple,collectGo
+1,"Advance to PlumpyNut.  If you pass Panango, collect $200", , , , , ,7, , , , ,1
+2,IMF Debt lifted from country; Refund of taxes. Collect $150,150, , , , , , , , , ,1
+3,Pay VAT Tax of $15, ,15, , , , , , , , ,1
+4,Auditor Fines you for sloppy accounting; For Each Franchise Pay $25., , , , , , ,25,, , ,1
+5,Go Back 3 Spaces., , , , ,-3, , , , , ,1
+6,You've been elected Chairman of the Chamber of Commerce; Pay each player $50, , , ,50, , , , , , ,1
+7,Advance to Go (Collect $200), , , , , ,1, , , , ,1
+8,Fidelity Emerging Markets Fund pays you Dividend of $50,50, , , , , , , , , ,1
+9,Advance to Mightylight, , , , , ,9, , , , ,1
+11,World Vision issues Grant.  Collect $500,500,,,,,,,,,,1
+10,Advance to Kiva, , , , , ,14, , , , ,1
