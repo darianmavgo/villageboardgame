@@ -4,14 +4,13 @@ The original board matched the 40 spaces of the original Monopoly design.  I dow
 # Found
 * Found!! The original javascript to control update of the board. It's contained in the html file kenya_inline.html. Thanks again to https://archive.org/ for preserving older versions of VillagetheGame.com.
 * the fish, the bear, and pig gif I used as the original 3 players is gone probably, now in the assets folder.
-
 * Deeds table google sheet.  I've committed it as csv. This details the all properties of each space on the Village board.  
 * Cards table google sheet.  I've committed it as csv.  This details all the cards that can happen during gameplay.  
 * Village globals google sheet. I've committed it as csv. I created a sheet that javascript feeds into a globals object and uses throughout gampeplay.  
 * Courtesy of Internet Archive I found the slightly butchered original prototype html, committed to this project as kenya.html. 
 
 # Still Missing 
-* main style sheet
+* js file that leverages google sheets to feed in all the config data. 
 
 # Functionality
 * Only single player or multiplayer with people taking turns on the same computer.  
