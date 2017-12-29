@@ -20,3 +20,13 @@ The original board matched the 40 spaces of the original Monopoly design.  I dow
 
 # Todo 
 * To restore the original gameplay, we simply need to update the image links to assets/image.gif instead of the previous path.  
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-5656121-8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-5656121-8');
+</script>
