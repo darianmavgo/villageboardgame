@@ -1,5 +1,5 @@
 # Village Board Game "Kenya" 
-In 2009 and some of 2010, I built a board game. Unfortunately the core javascript of the game is missing still.  In the kenya.html file you will find all of the templates for every dialog in the game.  I'm also adding the google sheets that contains all the settings for each spot on the village board. 
+In 2009 and some of 2010, I built a board game modeled after a downsized Monopoly board. I'm also adding the google sheets that contains all the settings for each spot on the village board. As of May 30 2022 I'm hosting it at https://www.mavgo.com/portfolio/kenya
 The original board matched the 40 spaces of the original Monopoly design.  I downsized the board to 20 spaces to better fit on the screen at the time.  
 # Found
 * Found!! The original javascript to control update of the board. It's contained in the html file kenya_inline.html. Thanks again to https://archive.org/ for preserving older versions of VillagetheGame.com.
@@ -18,15 +18,6 @@ The original board matched the 40 spaces of the original Monopoly design.  I dow
 * No secrets for a given player.  Since it's share the computer style there's no secrets between players.
 * Control panel on the side that allowed for lots of cheats for quick testing of any new game rule.
 
-# Todo 
+
 * To restore the original gameplay, we simply need to update the image links to assets/image.gif instead of the previous path.  
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-5656121-8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-5656121-8');
-</script>
+# Todo 
