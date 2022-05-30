@@ -1,628 +1,3360 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="assets/analytics.js.download" charset="utf-8"></script>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0082)http://web.archive.org/web/20080720165633/http://www.villagethegame.com/kenya.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<link rel="stylesheet" type="text/css" href="assets/banner-styles.css">
-<link rel="stylesheet" type="text/css" href="assets/iconochive.css">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Kenya</title>
+
+	<style type="text/css">
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.hideable {
+			visibility: hidden;
+		}
+
+		.owned {
+			width: 100%;
+			min-height: 200px;
+			background-color: #ccc;
+		}
+
+		.selected {
+			background-color: #cfc;
+			width: 100%;
+			min-height: 100px;
+		}
+
+		.ownlist {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			visibility: hidden;
+		}
+
+		.deedish,
+		.villager,
+		.news {
+			position: absolute;
+			visibility: hidden;
+			width: 180px;
+			height: 270px;
+			left: 150px;
+			border: 3px dotted #000;
+			padding: 10px;
+			z-index: 6;
+		}
+
+		.villager {
+			background-color: #bfb;
+		}
+
+		.news {
+			background-color: #bbf;
+		}
+
+		.rightify {
+			text-align: right;
+			white-space: nowrap;
+		}
+
+		.pricediv {
+			position: absolute;
+			bottom: 0;
+			left: 2px;
+		}
+
+		#villagertable,
+		#newstable,
+		#colortable,
+		#deedstable {
+			position: absolute;
+			top: 560px;
+			left: 0px;
+			border: 1px solid #000;
+			visibility: hidden;
+			height: 600px;
+			padding: 0 0 0 0;
+		}
+
+		#chatbox {
+			position: absolute;
+			left: 680px;
+			top: 0px;
+			width: 300px;
+			height: 550px;
+		}
+
+		#newstable {
+			visibility: hidden;
+		}
+
+		#villagertable {
+			visibility: hidden;
+			top: 1000px;
+		}
+
+		#deedstable td {
+			border: 1px solid #909;
+		}
+
+		#villagerbox,
+		#newsbox,
+		#deedbox {
+			position: absolute;
+			visibility: hidden;
+			top: 0px;
+			left: 0px;
+		}
+
+		.token {
+			padding: 0;
+			margin: 0;
+			width: 30px;
+			height: 30px;
+			z-index: 16;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			/* this is the key! */
+		}
+
+		h2 {
+			padding: 0;
+			margin: 0;
+			font-size: 1.1em;
+		}
+
+		#notes {
+			position: absolute;
+			left: 670px;
+			top: 0px;
+			width: 300px;
+			background-color: #ffc;
+			border: 1px solid #995;
+			padding: 2px;
+		}
+
+		#board1 {
+			position: absolute;
+			padding: 0px;
+			top: 0px;
+			left: 0px;
+			border: 1px solid #000;
+			overflow: auto;
+			width: 650px;
+			font-size: 1.0em;
+		}
+
+		#board1 td {
+			width: 110px;
+			height: 85px;
+		}
+
+		#playconsole {
+
+			bottom: 87px;
+			left: 0px;
+			padding: 0;
+			margin: 0;
+			visibility: visible;
+		}
+
+		#playconsole td {
+			border: 0px dotted #909;
+			vertical-align: top;
+		}
+
+		#turnwrapper {
+			position: absolute;
+			top: 90px;
+			left: 120px;
+			overflow: visible;
+			width: 70px;
+			z-index: 8;
+		}
+
+		#turnpanel,
+		#rollagainbutton,
+		#finishturnbutton,
+		#startturn,
+		#buttons,
+		#startbox {
+			position: relative;
+			white-space: nowrap;
+			top: 0px;
+			left: 0px;
+			visibility: hidden;
+			background-color: #fcc;
+			z-index: 7;
+		}
 
 
-	
-	<title>Village the Game Prototype "Kenya" Doesnt work in Internet Explorer; use Firefox, Safari or Google Chrome</title>
+		#startbox {
+			width: 485px;
+			height: 420px;
+			padding: 40px;
+			z-index: 10;
+			vertical-align: middle;
+			visibility: visible;
+		}
 
-<!-- END OF TAG FOR head SECTION -->
+		#startturn {
+			visibility: visible;
+		}
 
-	<link rel="StyleSheet" href="assets/kstyle.css" type="text/css"> 
-	
-<!-- Dependencies --> 
- <script type="text/javascript" src="assets/gspreadsheet.js.download"></script>
- <link rel="stylesheet" href="assets/example.css" type="text/css" media="screen"> 
-
- <script type="text/javascript" src="assets/yahoo-dom-event.js.download"></script>
- <script type="text/javascript" src="assets/element-beta-min.js.download"></script>
-
-<!-- Drag and Drop source file --> 
-<script type="text/javascript" src="assets/dragdrop-min.js.download"></script>
+		#buttons {
+			left: 70px;
+		}
 
 
+		#supgradewindow,
+		#upgradewindow,
+		#mortgagewindow,
+		#umortgagewindow,
+		#auctiontable,
+		#buywindow,
+		#tradebox,
+		#tradechoice {
+			visibility: hidden;
+			position: absolute;
+			left: 0px;
+			top: 40px;
+			width: 140px;
+			border: 2px dotted #909;
+			background-color: #eee;
+			z-index: 8;
+		}
 
+		#buywindow {
+			position: relative;
+		}
+
+		#auctiontable,
+		#tradebox {
+			left: -80px;
+			top: -80px;
+			width: 500px;
+		}
+
+		#tradetable {
+			width: 100%;
+		}
+
+		#tradebox {
+			height: 400px;
+			z-index: 9;
+		}
+
+		#tradechoice {
+			left: 150px;
+			z-index: 9;
+		}
+
+		#tradebox div {
+			width: 100%;
+			vertical-align: top;
+		}
+
+		#auctiontable td {
+			border: 2px dotted #909;
+		}
+
+		#tradetable td {
+			border: 2px dotted #909;
+			width: 50%;
+		}
+
+		#mortgagewindow,
+		#supgradewindow {
+			z-index: 9;
+		}
+
+		#board1 td {
+			border: 1px dotted #000;
+			margin-top: 0px;
+			padding: 0px;
+			max-width: 100px;
+			vertical-align: top;
+		}
+
+		.space {
+			position: relative;
+			visibility: visible;
+			height: 100%;
+			min-width: 70px;
+			border: 1px dotted #000;
+			overflow: visible;
+		}
+
+		.space div {
+			margin-left: 2px;
+		}
+
+		#mover {
+			width: 150px;
+		}
+
+		#controlpanel {
+			position: absolute;
+			top: 0px;
+			left: 450px;
+			visibility: hidden;
+			width: 300px;
+			z-index: 5;
+		}
+
+		#close {
+			float: right;
+		}
+
+		#donate {}
+	</style>
 </head>
+
 <body>
- 
- <table id="main-wrapper">
-	<tbody><tr>
-	<td id="game-content">
-		<h2 id="topbar" class="vh2"><img src="assets/logo.ico">Village the Game 
-			<input type="button" id="loadbutton" onclick="loaddata();" value="Load Game Data"> 
-			<input type="button" id="startbox" onclick="startGame();setHidden(&#39;startbox&#39;);">
-			<span id="playersales"></span>
-		</h2>
-		<!-- STARTNOTE BEGIN -->
-		<div id="startnote">
-			<h3>Welcome to Village the Game Prototype: "Kenya"</h3>
-			<p>You are an entrepreneur in Kenya starting businesses in your village to improve the lives of the villagers. For example, start Kickstart to sell irrigation pumps to farmers. Start Kiva to help villagers get credit so they can buy your other tools. </p>
-			<h3>How to Win:</h3>
-			<p>Have the most sales revenue once all the villager needs have been met. </p>
-			<h3>How to Play</h3>
-			<p>Each Player rolls dice to move around the village. During your turn, if you land on a business you can start that business.
-				When your opponents land on your business they buy tools and services from your business and use them to improve the village.  
-				If you get all the businesses of the same color, you can upgrade your businesses and make the village even stronger.
-			</p>
-			<h3>Turn Order</h3>
-			 <ol>
-				<li>Roll dice to see where you land.</li>
-				<li>If you land on an unowned business, buy it or let another player start it.</li>
-				<li>If you land on a Villager space, find out what the Villagers need.</li>
-				<li>If you land on a News space, find out what is happening in the Village</li>
-				<li>Trade money and businesses with other players</li>
-				<li>Buy and Sell upgrades</li>
-				<li>End Turn</li>
-			 </ol>
-			<h3>Notes: </h3>
-			<p>There isn't real multiplayer support yet.  You and friends have to play it together on one computer. </p>
-			<h3>Warning: </h3>
-			<p>If you refresh your browser, the current game will be erased. </p>
-			<p>*"Kenya" does not work in Internet Explorer; use <a href="http://www.mozilla.com/en-US/firefox/">Firefox</a>, <a href="http://www.apple.com/safari/download/">Safari</a> or <a href="http://www.google.com/chrome/index.html">Google Chrome</a>. Thank you!* </p>
-			
-			
-			<div class="obviousbuttons">
-				<input type="button" id="loadbutton2" onclick="loaddata();" value="Load Game Data"> 
-				<input type="button" id="startbox2" onclick="startGame();setHidden(&#39;startbox&#39;);setHidden(&#39;startbox2&#39;);">
+	<div style="visibility: hidden;" id="startbox" onclick="startGame();setHidden(this);">
+		[Start Game]
+	</div>
+
+	<table id="board1">
+		<tbody>
+			<tr>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="11upgrade"></span></div>
+						<div><span id="11title">Villager</span></div>
+						<div>&nbsp;<span id="11cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="11own"></span><span id="11price"></span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: rgb(204, 255,
+                255)" onclick="setVisible(&#39;12deed&#39;);">
+						<div>&nbsp;<span id="12upgrade"></span></div>
+						<div><span id="12title">Mightylight</span></div>
+						<div>&nbsp;<span id="12cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="12own"></span>$<span id="12price">470</span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: rgb(204, 255,
+                255)" onclick="setVisible(&#39;13deed&#39;);">
+						<div>&nbsp;<span id="13upgrade"></span></div>
+						<div><span id="13title">Sun Shines for All</span></div>
+						<div>&nbsp;<span id="13cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="13own"></span>$<span id="13price">480</span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: rgb(204, 255,
+                255)" onclick="setVisible(&#39;14deed&#39;);">
+						<div>&nbsp;<span id="14upgrade"></span></div>
+						<div><span id="14title">United Villages</span></div>
+						<div>&nbsp;<span id="14cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="14own"></span>$<span id="14price">500</span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: rgb(204, 255,
+                255)" onclick="setVisible(&#39;15deed&#39;);">
+						<div>&nbsp;<span id="15upgrade"></span></div>
+						<div><span id="15title">Wizzit</span></div>
+						<div>&nbsp;<span id="15cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="15own"></span>$<span id="15price">510</span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="16upgrade"></span></div>
+						<div><span id="16title">Villager</span></div>
+						<div>&nbsp;<span id="16cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="16own"></span><span id="16price"></span></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="10upgrade"></span></div>
+						<div><span id="10title">News</span></div>
+						<div>&nbsp;<span id="10cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="10own"></span><span id="10price"></span></div>
+					</div>
+				</td>
+				<td id="turnpanelcontainer">
+					<div id="turnpanel">
+						<ul>
+							<li><span style="visibility: visible;" id="startturn" onclick="rollDice();">[Roll
+									Dice]</span></li>
+							<li><span id="finishturnbutton" onclick="endTurn();">[Finish Turn]</span></li>
+							<li><span id="rollagainbutton" onclick="rollDice();">[Roll Again]</span></li>
+							<li><span id="sellupgradebutton" onclick="startSellUpgrade();">[Sell Upgrade]</span></li>
+							<li><span id="upgradebutton" onclick="upgrade();">[Upgrade]</span></li>
+							<li><span id="mortgagebutton" onclick="mortgage();">[Mortgage]</span></li>
+							<li><span id="unmortgagebutton" onclick="unMortgage();">[UnMortgage]</span></li>
+							<li><span id="tradebutton" onclick="trade();">[Trade]</span></li>
+							<li>
+								<div id="buywindow">
+									<span onclick="buyDeed(globals.currentdeed);" id="buybutton">[Buy]</span>
+									<span onclick="auctionDeed(globals.currentdeed);"
+										id="auctionbutton">[Auction]</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+
+				<td>
+				</td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="17upgrade"></span></div>
+						<div><span id="17title">News</span></div>
+						<div>&nbsp;<span id="17cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="17own"></span><span id="17price"></span></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 153, 153)" onclick="setVisible(&#39;9deed&#39;);">
+						<div>&nbsp;<span id="9upgrade"></span></div>
+						<div><span id="9title">PlumpyNut</span></div>
+						<div>&nbsp;<span id="9cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="9own"></span>$<span id="9price">460</span></div>
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="space" style="background-color: rgb(225,
+                3, 252)" onclick="setVisible(&#39;18deed&#39;);">
+						<div>&nbsp;<span id="18upgrade"></span></div>
+						<div><span id="18title">Unitus</span></div>
+						<div>&nbsp;<span id="18cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="18own"></span>$<span id="18price">550</span></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 153, 153)" onclick="setVisible(&#39;8deed&#39;);">
+						<div>&nbsp;<span id="8upgrade"></span></div>
+						<div><span id="8title">Kickstart</span></div>
+						<div>&nbsp;<span id="8cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="8own"></span>$<span id="8price">430</span></div>
+					</div>
+				</td>
+				<form id="mover" >
+					<td><input name="player" value="Fish" type="radio" checked><img src="Kenya_files/icons8-fish-48.png"
+							alt="fish"><br> $<span id="Fishscore">1500</span></td>
+					<td><input name="player" value="Pig" type="radio"><img src="Kenya_files/icons8-pig-48.png"
+							alt="pig"><br> $<span id="Pigscore">1500</span></td>
+					<td><input name="player" value="Bear" type="radio"><img src="Kenya_files/icons8-bear-64.png"
+							alt="bear"><br> $<span id="Bearscore">1500</span></td>
+				</form>
+				<td></td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="19upgrade"></span></div>
+						<div><span id="19title">Villager</span></div>
+						<div>&nbsp;<span id="19cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="19own"></span><span id="19price"></span></div>
+					</div>
+				</td>
+			</tr>
+			<tr id="bottominsiderow">
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 153, 153)" onclick="setVisible(&#39;7deed&#39;);">
+						<div>&nbsp;<span id="7upgrade"></span></div>
+						<div><span id="7title">Aravind Eye Care</span></div>
+						<div>&nbsp;<span id="7cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="7own"></span>$<span id="7price">420</span></div>
+					</div>
+				</td>
+				<td>
+				</td>
+				<td></td>
+				<td></td>
+				<td> <img src="Kenya_files/bank.gif" alt="bank"><br>$<span id="bankscore">1000000</span>
+				</td>
+				<td>
+					<div class="space" style="background-color: rgb(225,
+                3, 252)" onclick="setVisible(&#39;20deed&#39;);">
+						<div>&nbsp;<span id="20upgrade"></span></div>
+						<div><span id="20title">Kiva</span></div>
+						<div>&nbsp;<span id="20cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="20own"></span>$<span id="20price">600</span></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="6upgrade"></span></div>
+						<div><span id="6title">Villager</span></div>
+						<div>&nbsp;<span id="6cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="6own"></span><span id="6price"></span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 153, 255)" onclick="setVisible(&#39;5deed&#39;);">
+						<div>&nbsp;<span id="5upgrade"></span></div>
+						<div><span id="5title">CFWShops</span></div>
+						<div>&nbsp;<span id="5cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="5own"></span>$<span id="5price">410</span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 153, 255)" onclick="setVisible(&#39;4deed&#39;);">
+						<div>&nbsp;<span id="4upgrade"></span></div>
+						<div><span id="4title">Healthy Cities Sanitation</span></div>
+						<div>&nbsp;<span id="4cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="4own"></span>$<span id="4price">400</span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="3upgrade"></span></div>
+						<div><span id="3title">News</span></div>
+						<div>&nbsp;<span id="3cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="3own"></span><span id="3price"></span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="2upgrade"></span></div>
+						<div><span id="2title">Villager</span></div>
+						<div>&nbsp;<span id="2cage" colspan="2"></span></div>
+						<div class="pricediv">&nbsp;<span id="2own"></span><span id="2price"></span></div>
+					</div>
+				</td>
+				<td>
+					<div class="space" style="background-color: 
+                rgb(255, 255, 255)">
+						<div>&nbsp;<span id="1upgrade"></span></div>
+						<div><span id="1title">Panango</span></div>
+						<div>&nbsp;<span id="1cage" colspan="2"><img class="token" id="Fish"
+									src="Kenya_files/icons8-fish-48.png"><img class="token" id="Pig"
+									src="Kenya_files/icons8-pig-48.png"><img class="token" id="Bear"
+									src="Kenya_files/icons8-bear-64.png"></span></div>
+						<div class="pricediv">&nbsp;<span id="1own"></span><span id="1price"></span></div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- TURN PANEL -->
+	<div id="turnwrapper">
+
+
+		<div id="mortgagewindow">
+			<div>Player <span id="mplayer"></span> click properties you want to mortgage.</div>
+			<div id="mpropview"></div>
+			<div id="mbuttonpanel"><span id="finishmortgage" onclick="finishMortgage();">[Finish Mortgage(s)]</span>
 			</div>
-			
-		</div> 
-		<!-- STARTNOTE END -->
-		
-		<!-- Boardwrapper BEGIN -->
-		<div id="boardwrapper">
-		<!-- <h2 class="vh2">Village the Game 1.0 "Kenya"</h2> -->
-		<!-- BOARD1 BEGIN -->
-		<div id="board1">
-			 <table id="boardtoprow">
-			 <tbody><tr>
-				<td class="space" id="space7"></td>
-				<td class="space" id="space8"></td>
-				<td class="space" id="space9"></td>
-				<td class="space" id="space10"></td>
-				<td class="space" id="space11"></td>
-			
-			 </tr>
-			 <tr id="vmidsection">
-				<td id="boardleftcolumn">
-					
-					<div class="space" id="space6"></div>
-					<div class="space" id="space5"></div>
-					
-				</td>
-				<td colspan="3" id="boardmidsection">
-					
-				</td>
-				<td id="boardrightcolumn">
-					<div class="space" id="space12"></div>
-					<div class="space" id="space13"></div>
-				</td>
-			 </tr>
-			 <tr id="boardbottomrow">
-		
-				<td class="space" id="space4"></td>
-				<td class="space" id="space3"></td>
-				<td class="space" id="space2"></td>
-				<td class="space" id="space1"></td>
-				<td class="space" id="space0"></td>
-			 </tr>
-			 </tbody></table>
 		</div>
-		<!-- BOARD1 END -->
-
-		<!-- HUD -->
-		<div id="hud">
-			<!-- DIVMSG -->
-				<div id="divmsg">
-					<table>
-						<tbody><tr>
-						<td id="divmsgwrapper">
-							
-						</td>
-
-						<td>
-							<input id="msgok" value="x" onclick="closemsg();" type="button">
-						</td>
-						</tr>
-					</tbody></table>
-				</div>
-			<!-- DIVMSG END-->	
-			<table>
-				<tbody><tr>
-					<td>
-						<table id="turnpanel">
-							<tbody><tr>
-								<td><input style="visibility: visible;" id="startturn" onclick="rollDice();" value="Roll Dice (0)" type="button">
-									<input id="finishturnbutton" onclick="endTurn();" style="visibility: hidden;" value="End Turn" type="button">		
-								</td>
-								<td>
-									<input id="upgradebutton" onclick="upgrade();" style="visibility: hidden;" value="Upgrade" type="button">
-									<input id="sellupgradebutton" onclick="startSellUpgrade();" style="visibility: hidden;" value="Sell Upgrade" type="button">
-									<input style="visibility: hidden;" id="tradebutton" onclick="trade();" value="Trade" type="button"> <div style="visibility: hidden;" id="tradeoptions"> </div>
-								</td>
-							</tr>
-						</tbody></table>
-						
-					</td>
-					<td id="detailwindow">
-						<form id="mover">
-							<div id="playertabswrapper" class="tabber">		
-							</div>
-						</form>
-						
-					</td>
-				</tr>
-			</tbody></table>
-		</div><!-- HUD END -->
-	</div>
-	<div id="infowindow">
-		
-	</div>
-	
-	</td><!--id="game-content"-->
-	<td id="game_ads">
-		<h2 class="vh2">Ads</h2>
-		<!-- PUT THIS TAG IN DESIRED LOCATION OF SLOT BlogPageMREC
-			 -->
-		<script type="text/javascript">
-		  GA_googleFillSlot("BlogPageMREC");
-		</script>
-		  
-		<!-- END OF TAG FOR SLOT BlogPageMREC
-			 -->
-			 
-		<!-- CONTROLPANEL -->
-			<div id="controlpanel">
-				<h2 class="vh2">Control Panel <b class="button" onclick="setHidden(this.parentNode.parentNode)">[x]</b></h2>
-				<span onclick="giveAll();">[Give All]</span>
-				<span onclick="givePumps();">[Give Pumps]</span>
-				<span onclick="tabberAutomatic();">[Tabber]</span>
-				<span onclick="animatemove(2, 9, &#39;Fish&#39;);">[Show Fish Moving]</span>
-				<span onclick="loaddata();">[Load Deeds, Cards, Colors]</span>
-				<span onclick="alert(netWorth(&#39;Fish&#39;));">[Networth Fish]</span>
-				<span onclick="allButHealthCities();">[Own all but HealthyCities]</span>
-				<span onclick="removePlayer(&#39;Fish&#39;)">[Remove Fish]</span>
-				<span onclick="burnFishBear();">[Burn FishBear]</span>
-				<span onclick="buildBoard();">[Build Board]</span>
-				<span onclick="indexTable();">[Index Table]</span>
-				<span onclick="buildDeeds();">[Build Deeds]</span>
-				<span onclick="makeMonopoly(1,&#39;Fish&#39;);">[Make Monopoly(1, 'Fish')]</span>
-				<span onclick="sellUpgrade(2);">[Sell Upgrade(2)]</span>
-				<span onclick="testDeedList(&#39;Fish&#39;);">[MakeDeedList('Fish')]</span>
-				<span onclick="buyUpgrade(4);">[Buy Upgrade (4)]</span>
-				<span onclick="buildMonoHash();">[Build Monopoly Hash]</span> 
-				<span onclick="buildCards();">[Build Cards]</span>
-				
-				  <table>
-				
-				  <tbody><tr>
-					<td>
-					  <h2 class="vh2">Roll</h2>
-					  <span onclick="rollDice([1]);">[1]</span>
-					  <span onclick="rollDice([2]);">[2]</span>
-					  <span onclick="rollDice([3]);">[3]</span>
-					  <span onclick="rollDice([4]);">[4]</span>
-					  <span onclick="rollDice([5]);">[5]</span>
-					  <span onclick="rollDice([6]);">[6]</span>
-					</td>
-					<td>
-					</td>
-					<td id="errorlog"> </td>
-					<td> VillagerCards 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 1);">[1]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 2);">[2]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 3);">[3]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 4);">[4]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 5);">[5]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 6);">[6]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 7);">[7]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 8);">[8]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 9);">[9]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 10);">[10]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 11);">[11]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 12);">[12]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 13);">[13]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 14);">[14]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 15);">[15]</span> 
-					<span onclick="showVillagerCard(getCurrentPlayer(), 16);">[16]</span> 
-					</td>
-					<td> NewsCards <span onclick="showNewsCard(getCurrentPlayer(), 1);">[1]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 2);">[2]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 3);">[3]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 4);">[4]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 5);">[5]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 6);">[6]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 7);">[7]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 8);">[8]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 9);">[9]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 10);">[10]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 11);">[11]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 12);">[12]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 13);">[13]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 14);">[14]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 15);">[15]</span>
-					<span onclick="showNewsCard(getCurrentPlayer(), 16);">[16]</span>
-					</td>
-				  </tr>
-				
-				  </tbody></table>
-			</div>
-			<!-- CONTROLPANEL END -->	 
-	</td><!--id="game_ads"-->
-	<td id="facebook_ads_container">
-		<h2 class="vh2">Facebook Ads</h2>
-		
-		<div id="facebook_ads">
-				
-			<!-- OFFSCREEN -->
-			<div id="offscreen">
-				<h2 class="vh2"> OffScreen </h2>
-				<!-- Put stuff here for storage when it's off screen like button's the the user can't click -->
-				
-			</div>
-			
-		</div><!-- facebooc_ads-->
-	</td><!--id="facebook_ads_container"-->
-	
-	</tr>
- </tbody></table>
- <!-- END main-wrapper -->
-<!-- Boardwrapper END -->
-
-
-	
-
-<!-- TURN WRAPPER -->
-<div id="turnwrapper">	
-	<div id="popupbox">
-		<div id="winbox"></div>
-		<!-- deed, card, auction, trade, bankruptcy box go here -->
-		<!-- DEEDBOX -->
-		<div id="deedbox"></div>
-		<!-- DEEDBOX END -->	
-		<!-- VILLAGERBOX -->
-		<div id="villagerbox"></div>
-		<!-- VILLAGERBOX END -->
-		<!-- newsbox -->
-		<div id="newsbox"></div>
-		<!-- newsbox END -->
+		<div id="umortgagewindow">
+			<div>Player <span id="umplayer"></span> click properties you want to unmortgage.</div>
+			<div id="umpropview"></div>
+			<div id="umbuttonpanel"><span id="finishunmortgage" onclick="finishUnMortgage();">[Finish
+					UnMortgage(s)]</span></div>
+		</div>
 		<div id="upgradewindow">
-			<h2 class="vh2">Upgrades</h2>
+			<div>Player <span id="upplayer"></span> click properties you want to upgrade.</div>
 			<div id="uppropview"></div>
-			<div id="upbuttonpanel"><input type="button" id="finishupgradebutton" onclick="finishUpgrade();" value="Finish Upgrade(s)"></div>
+			<div id="upbuttonpanel"><span id="finishupgrade" onclick="finishUpgrade();">[Finish Upgrade(s)]</span></div>
 		</div>
 		<div id="supgradewindow">
-			<h2 class="vh2">Sell Upgrades</h2>
+			<div>Player <span id="supplayer"></span> click properties you want to sell upgrades of.</div>
 			<div id="suppropview"></div>
-			<div id="supbuttonpanel"><input type="button" id="finishsellupgradebutton" onclick="finishSellUpgrade();" value="Finish Selling Upgrade(s)"></div>
+			<div id="supbuttonpanel"><span id="finishsupgrade" onclick="finishSellUpgrade();">[Finish Selling
+					Upgrade(s)]</span></div>
 		</div>
-		
-		<div id="brokepanel">
-			<h2 class="vh2" id="brokepaneltitle">Sell, Trade or Declare Bankruptcy</h2>
-			<!--
-			<input type="button" id="brokepanelsellupgradebutton" value="Sell Upgrade" onclick="startSellUpgrade(globals.broke);"/>
-			-->
-			<input type="button" id="brokepanelbankruptcybutton" value="Declare Bankruptcy" onclick="bankruptcy(globals.broke, globals.owed);">
+		<!-- TRADECHOICE BEGIN -->
+		<div id="tradechoice">
 		</div>
+		<!-- TRADECHOISE END -->
 
-		
-		<!-- TRADETABLE BEGIN -->	
+
+		<!-- TRADETABLE BEGIN -->
 		<div id="tradebox">
-			<h2 class="vh2">Trade</h2>
 			<table id="tradetable">
-				<tbody><tr> 
-				<td class="owned"><!-- Player 1 Side -->
-						<h3><span id="owner1"></span> can offer</h3>
-						<div><input type="button" value="+$10" onclick="upOffer(1,10);">
-							<input type="button" value="+$100" onclick="upOffer(1,100);">
-							<input type="button" value="+$500" onclick="upOffer(1,500);">
-						</div>
-						<div>Up to $<span id="owner1cash"></span></div>
-						<ul id="owned1">
-						</ul>
-				</td> <!-- Player 1 Side End -->
-				<td class="owned"><!-- Player 2 Side -->
-						<h3><span id="owner2"></span> can offer</h3>
-						<div>
-							<input type="button" value="+$10" onclick="upOffer(2,10);">
-							<input type="button" value="+$100" onclick="upOffer(2,100);">
-							<input type="button" value="+$500" onclick="upOffer(2,500);">
-						</div>
-						
-						<div>Up to $<span id="owner2cash"></span></div>
-						<ul id="owned2">
-						</ul>
-				</td><!-- Player 2 Side End -->
-				</tr>
-				<tr>
-				<td>
-					<div class="kselected">
-						<h3><span id="offerowner1"></span> is offering</h3>
-						<div>$<span id="cashoffer1">0</span></div>
-						<ul id="selected1"></ul>
-					</div>
-				</td>
-				<td>
-					<div class="kselected">
-						<h3><span id="offerowner2"></span> is offering</h3>
-						<div>$<span id="cashoffer2">0</span></div>
-						<ul id="selected2"></ul>
-					</div>
-				</td>
-				</tr>
+				<tbody>
+					<tr>
+						<td>
+							<!-- Player 1 Side -->
+							<div>Trader 1:<span id="player1"></span></div>
+							<div><span onclick="upOffer(1,10);">[+10]</span><span
+									onclick="upOffer(1,100);">[+100]</span><span onclick="upOffer(1,500);">[+500]</span>
+							</div>
+							$<span id="cashoffer1">0</span>
+							<div class="owned" id="owned1"></div>
+							<div class="selected">
+								<ul id="selected1"></ul>
+							</div>
+						</td> <!-- Player 1 Side End -->
+						<td>
+							<!-- Player 2 Side -->
+							<div>Trader 2:<span id="player2"></span> | <span id="playerlist"></span></div>
+							<div><span onclick="upOffer(2,10);">[+10]</span><span
+									onclick="upOffer(2,100);">[+100]</span><span onclick="upOffer(2,500);">[+500]</span>
+							</div>
+							<div>$<span id="cashoffer2">0</span></div>
+							<div class="owned" id="owned2"></div>
+							<div class="selected">
+								<ul id="selected2"></ul>
+							</div>
+
+						</td><!-- Player 2 Side End -->
+					</tr>
 				</tbody>
 			</table>
-			<input type="button" id="accepttradebutton" value="Accept Trade" onclick="acceptTrade();">
-			<input type="button" value="Reset" onclick="resetTrade();">
-			<input type="button" id="canceltradebutton" value="Cancel" onclick="cancelTrade();">
+			<span onclick="acceptTrade();">[Accept Trade]</span><span onclick="resetTrade();">[Reset]</span> <span
+				onclick="cancelTrade();">[Cancel]</span>
 		</div>
-			
-		<!-- AUCTION TABLE BEGIN -->										
-		<div id="auctiontable">
-		  <h2 class="vh2" id="auctiontitle">Auction</h2>
-		  <table>
-			  <tbody><tr>
-				<td id="deeddisplay">Deed</td>
-				<td>
-					Top Bidder: <span id="topbidder"></span><br>
-					Top Bid: $<span id="topbid"></span> 
-					  <table id="biddingpanel">
-					
-					  <tbody><tr>
-						<td id="bidder1">
-						</td><td id="bidder2">
-						</td><td id="bidder3">
-						</td><td id="bidder4">
-					  </td></tr>
-					  <tr>
-						<td>$<span id="bid1">0</span></td>
-						<td>$<span id="bid2">0</span></td>
-						<td>$<span id="bid3">0</span></td>
-						<td>$<span id="bid4">0</span></td>
-					  </tr>
-					  <tr>
-						<td> <input type="button" value="+$10" onclick="upBid(1, 10);"></td>
-						<td> <input type="button" value="+$10" onclick="upBid(2, 10);"></td>
-						<td> <input type="button" value="+$10" onclick="upBid(3, 10);"></td>
-						<td> <input type="button" value="+$10" onclick="upBid(4, 10);"></td>
-					  </tr>
-					  <tr>
-						<td> <input type="button" value="+$50" onclick="upBid(1, 50);"></td>
-						<td> <input type="button" value="+$50" onclick="upBid(2, 50);"></td>
-						<td> <input type="button" value="+$50" onclick="upBid(3, 50);"></td>
-						<td> <input type="button" value="+$50" onclick="upBid(4, 50);"></td>
-					  </tr>
-					  <tr>
-						<td> <input type="button" value="+$100" onclick="upBid(1, 100);"></td>
-						<td> <input type="button" value="+$100" onclick="upBid(2, 100);"></td>
-						<td> <input type="button" value="+$100" onclick="upBid(3, 100);"></td>
-						<td> <input type="button" value="+$100" onclick="upBid(4, 100);"></td>
-					  </tr>
+
+		<!-- AUCTION TABLE BEGIN -->
+		<table id="auctiontable">
+
+			<tbody>
+				<tr>
+					<td>
+						<table>
+
+							<tbody>
+								<tr>
+									<td id="deeddisplay">Deed</td>
+									<td>
+										Top Bidder: <span id="topbidder"></span><br>
+										Top Bid: $<span id="topbid"></span>
+										<table>
+
+											<tbody>
+												<tr>
+													<td id="bidder1"></td>
+													<td id="bidder2"></td>
+													<td id="bidder3"></td>
+
+												</tr>
+												<tr>
+													<td>$<span id="bid1">0</span></td>
+													<td>$<span id="bid2">0</span></td>
+													<td>$<span id="bid3">0</span></td>
+
+												</tr>
+												<tr>
+													<td id="1plus10" onclick="upBid(1, 10);">[+$10]</td>
+													<td id="2plus10" onclick="upBid(2, 10);">[+$10]</td>
+													<td id="3plus10" onclick="upBid(3, 10);">[+$10]</td>
+
+												</tr>
+												<tr>
+													<td id="1plus10" onclick="upBid(1, 50);">[+$50]</td>
+													<td id="1plus10" onclick="upBid(2, 50);">[+$50]</td>
+													<td id="1plus10" onclick="upBid(3, 50);">[+$50]</td>
+												</tr>
+												<tr>
+													<td id="1plus10" onclick="upBid(1, 100);">[+$100]</td>
+													<td id="2plus10" onclick="upBid(2, 100);">[+$100]</td>
+													<td id="3plus10" onclick="upBid(3, 100);">[+$100]</td>
+
+												</tr>
+												<tr>
+													<td id="1mortgage"></td>
+													<td id="2mortgage"></td>
+													<td id="3mortgage"></td>
+
+												</tr>
+												<tr>
+													<td id="1sellupgrade"></td>
+													<td id="2sellupgrade"></td>
+													<td id="3sellupgrade"></td>
+
+												</tr>
+
+											</tbody>
+										</table>
+									</td>
+								</tr>
+
 							</tbody>
 						</table>
-						<input type="button" id="finishauctionbutton" onclick="finishAuction();" value="Finish Auction">
 					</td>
 				</tr>
-				
+				<tr>
+					<td><span class="button" onclick="finishAuction();">[Finish Auction]</span>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+		<!-- AUCTION TABLE END -->
+
+
+
+		<!-- CONTROLPANEL -->
+		<div id="controlpanel">
+			<a onclick="buildBoard();">[Build
+				Board]</a>
+			<a onclick="buildCondensedBoard();">[Build
+				Condensed Board]</a>
+			<a onclick="indexTable();">[Index
+				Table]</a>
+			<a onclick="buildDeeds();">[Build
+				Deeds]</a>
+			<a onclick="makeMonopoly(1,&#39;Fish&#39;);">[Make
+				Monopoly(1, 'Fish')]</a>
+			<a onclick="sellUpgrade(2);">[Sell
+				Upgrade(2)]</a>
+			<a onclick="testDeedList(&#39;Fish&#39;);">[MakeDeedList('Fish')]</a>
+			<a onclick="buyUpgrade(4);">[Buy Upgrade (4)]</a>
+			<a onclick="buildMonoHash();">[Build
+				Monopoly Hash]</a>
+
+			<a onclick="buildCards();">[Build
+				Cards]</a>
+			<a onclick="showVillagerCard();">[Show
+				Villager Card]</a>
+			<a onclick="alert(villagerorder);">[Show
+				Villager Order]</a>
+			<a onclick="alert(newsorder);">[Show Chest
+				Order]</a>
+			<table>
+
+				<tbody>
+					<tr>
+						<td>
+							<span onclick="rollDice([1]);">[1]</span>
+							<span onclick="rollDice([2]);">[2]</span>
+							<span onclick="rollDice([3]);">[3]</span>
+							<span onclick="rollDice([4]);">[4]</span>
+							<span onclick="rollDice([5]);">[5]</span>
+							<span onclick="rollDice([6]);">[6]</span>
+						</td>
+						<td>
+						</td>
+						<td id="errorlog"> </td>
+						<td> VillagerCards
+							<span onclick="showVillagerCard(getCurrentPlayer(), 1);">[1]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 2);">[2]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 3);">[3]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 4);">[4]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 5);">[5]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 6);">[6]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 7);">[7]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 8);">[8]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 9);">[9]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 10);">[10]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 11);">[11]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 12);">[12]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 13);">[13]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 14);">[14]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 15);">[15]</span>
+							<span onclick="showVillagerCard(getCurrentPlayer(), 16);">[16]</span>
+						</td>
+						<td> NewsCards <span onclick="showNewsCard(getCurrentPlayer(), 1);">[1]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 2);">[2]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 3);">[3]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 4);">[4]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 5);">[5]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 6);">[6]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 7);">[7]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 8);">[8]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 9);">[9]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 10);">[10]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 11);">[11]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 12);">[12]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 13);">[13]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 14);">[14]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 15);">[15]</span>
+							<span onclick="showNewsCard(getCurrentPlayer(), 16);">[16]</span>
+						</td>
+					</tr>
+
 				</tbody>
 			</table>
-			
 		</div>
-		<!-- AUCTION TABLE END -->										
-		<!-- BUYWINDOW -->
-		<table id="buywindow">
-			<tbody><tr>
-				<td>
-					<input type="button" onclick="buyDeed(globals.currentdeed);" id="buybutton" value="Start">
-				</td>
-				<td>
-					<input type="button" onclick="auctionDeed(globals.currentdeed);" id="auctionbutton" value="Auction">
-				</td>
-			</tr>
-		</tbody></table>
-		<!-- BUYWINDOW -->
-		<!-- PRODUCEWINDOW -->
-		<table id="producewindow">
-			<tbody><tr>
-				<td>Produce :
-				</td>
-				<td>
-					<input type="button" onclick="produce(globals.selectedbiz, 1)" value=" 1 ">
-				</td>
-				<td>
-					<input type="button" onclick="produce(globals.selectedbiz, 5)" value=" 5 ">
-				</td>
-				<td>
-					<input type="button" onclick="produce(globals.selectedbiz, 10)" value=" 10 ">
-				</td>
-				<td>
-					<input type="button" onclick="produce(globals.selectedbiz, 50)" value=" 50 ">
-				</td>
-			</tr>
-		</tbody></table>
-		<!-- PRODUCEWINDOW -->
-		</div>	
-	</div> <!--PopupBox END -->
-	
-
-
-
-	
- 
-<!-- DATA --> 
-<div id="data">
-	<span id="buyauctionhelp">If you don't want to start the business, it will automatically go up for auction.</span>
-	<span id="tradehelp">You can offer other players cash and businesses in exchange for their cash or businesses.</span>
-	<span id="upgradehelp">Now that you own all the businesses of the same color you can upgrade them.</span>
-	<span id="sellupgradehelp">If you need money now, you can sell upgrades for half price.</span>
-	<span id="bankruptcyhelp">When you run out of cash and assets you must declare bankruptcy. Sorry.</span>
-	<span id="newshelp">News causes something to happen in the village.</span>
-	<span id="villagerhelp">Villagers help you learn what is going on in the lives of villagers.</span>
-
-	<span class="score" id="bankscore">1000400</span>
-	<!-- PLAYERTEMPLATE -->
-	
-	<div id="playertemplate">
-		<div class="tabbertab">
-			<h2>PLAYERNAME1</h2>
-			<table id="PLAYERID1">
-				<tbody><tr>
-					<td>
-						<img class="profilepic" src="assets/PROFILEPIC">
-					</td>
-					<td>
-						<input class="radio" id="PLAYERID2Radio" name="player" value="PLAYERID3" type="radio">
-						<img class="playericon" src="assets/TOKENURL" alt="PLAYERNAME2">
-						$<span class="score" id="PLAYERID4score">PLAYERCASH</span><br>
-						Sales: $<span class="sales" id="salesPLAYERID7">PLAYERSALES</span>
-					</td>
-					<td id="controlsPLAYERID5">
-					</td>
-					<td id="inventoryboxPLAYERID6">
-					</td>
-				</tr>
-			</tbody></table>
+		<!-- CONTROLPANEL END -->
+		<!-- VILLAGERBOX -->
+		<div id="villagerbox">
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 1 );" id="1villagercard">
+				<h2>Villager</h2>Advance to Aravind Eye Care.<span>&nbsp;
+				</span>If you pass Panango, collect $200
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 2 );" id="2villagercard">
+				<h2>Villager</h2>IMF Debt lifted from country; Refund of taxes.
+				Collect $150
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 3 );" id="3villagercard">
+				<h2>Villager</h2>Pay VAT Tax of $15
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 4 );" id="4villagercard">
+				<h2>Villager</h2>Auditor Fines you for sloppy accounting; For
+				Each Franchise Pay $25; For Each Megamart Pay $100.
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 5 );" id="5villagercard">
+				<h2>Villager</h2>Go Back 3 Spaces.
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 6 );" id="6villagercard">
+				<h2>Villager</h2>You've been elected Chairman of the Chamber of
+				Commerce; Pay each player $50
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 7 );" id="7villagercard">
+				<h2>Villager</h2>Advance to Go (Collect $200)
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 8 );" id="8villagercard">
+				<h2>Villager</h2>Fidelity Emerging Markets Fund pays you Dividend
+				of $50
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 9 );" id="9villagercard">
+				<h2>Villager</h2>Advance to Mightylight
+			</div>
+			<div class="villager" onclick="villagercard(getCurrentPlayer(), 10 );" id="10villagercard">
+				<h2>Villager</h2>Advance to Kiva
+			</div>
 		</div>
+		<!-- VILLAGERBOX END -->
+		<!-- CHESTBOX -->
+		<div id="newsbox">
+			<div class="news" onclick="newscard(getCurrentPlayer(), 1 );" id="1newscard">
+				<h2>News</h2>Terrorist bombs storefronts and insurance didn't
+				cover acts of terrorism $40 per franchise, $115 per megamart
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 2 );" id="2newscard">
+				<h2>News</h2>Ashoka Grant collect $200
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 3 );" id="3newscard">
+				<h2>News</h2>VC invests in your enterprise collect $100
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 4 );" id="4newscard">
+				<h2>News</h2>Grand Internet Cafe Opening; Collect $50 from
+				every player
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 5 );" id="5newscard">
+				<h2>News</h2>Oprah hilights your efforts; Collect $100
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 6 );" id="6newscard">
+				<h2>News</h2>You won Business Innovators Award; Collect $10
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 7 );" id="7newscard">
+				<h2>News</h2>From Sale of Biodiesel you get $45
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 8 );" id="8newscard">
+				<h2>News</h2>Moratorium on US food subsidies sky rockets
+				demand for local agriculture; Collect $100
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 9 );" id="9newscard">
+				<h2>News</h2>Advance to Panango (Collect $200)
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 10 );" id="10newscard">
+				<h2>News</h2>Bureaucrats demand bribe for Building Permit.
+				Pay $150
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 11 );" id="11newscard">
+				<h2>News</h2>Govt bombs school because they mistook it for
+				terrorist training camp. Pay $100
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 12 );" id="12newscard">
+				<h2>News</h2>Local bureaucrats have 'Come to Jesus'
+				experience and refund bribe; Collect $20
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 13 );" id="13newscard">
+				<h2>News</h2>Cops charge toll fee; Pay $50
+			</div>
+			<div class="news" onclick="newscard(getCurrentPlayer(), 14 );" id="14newscard">
+				<h2>News</h2>Acumen Fund grant; Collect $25
+			</div>
+		</div>
+		<!-- CHESTBOX END -->
+		<!-- DEEDBOX -->
+		<div id="deedbox">
+			<div class="deedish" id="4deed" style="background-color:
+                rgb(255, 153, 255);">
+				<div id="4closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Healthy Cities Sanitation<br>RENT <span
+					class="rightify">$40</span><br>With 1 Franchise <span class="rightify">$400</span><br>With 2
+				Franchises <span class="rightify">$600</span><br>With 3 Franchises <span
+					class="rightify">$1,000</span><br>With 4 Franchises <span class="rightify">$1,600</span><br>With
+				MEGAMART <span class="rightify">$2,000</span><br>Mortgage Value <span
+					class="rightify">$200</span><br>Franchises cost <span class="rightify">$100
+					each</span><br>Megamarts, $100 plus 4 franchises
+			</div>
+			<div class="deedish" id="5deed" style="background-color:
+                rgb(255, 153, 255);">
+				<div id="5closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>CFWShops<br>RENT <span
+					class="rightify">$60</span><br>With 1 Franchise <span class="rightify">$600</span><br>With 2
+				Franchises <span class="rightify">$900</span><br>With 3 Franchises <span
+					class="rightify">$1,500</span><br>With 4 Franchises <span class="rightify">$2,400</span><br>With
+				MEGAMART <span class="rightify">$3,000</span><br>Mortgage Value <span
+					class="rightify">$205</span><br>Franchises cost <span class="rightify">$100
+					each</span><br>Megamarts, $100 plus 4 franchises
+			</div>
+			<div class="deedish" id="7deed" style="background-color:
+                rgb(255, 153, 153);">
+				<div id="7closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Aravind Eye Care<br>RENT <span
+					class="rightify">$70</span><br>With 1 Franchise <span class="rightify">$700</span><br>With 2
+				Franchises <span class="rightify">$1,050</span><br>With 3 Franchises <span
+					class="rightify">$1,750</span><br>With 4 Franchises <span class="rightify">$2,800</span><br>With
+				MEGAMART <span class="rightify">$3,500</span><br>Mortgage Value <span
+					class="rightify">$210</span><br>Franchises cost <span class="rightify">$150
+					each</span><br>Megamarts, $150 plus 4 franchises
+			</div>
+			<div class="deedish" id="8deed" style="background-color:
+                rgb(255, 153, 153);">
+				<div id="8closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Kickstart<br>RENT <span
+					class="rightify">$80</span><br>With 1 Franchise <span class="rightify">$800</span><br>With 2
+				Franchises <span class="rightify">$1,200</span><br>With 3 Franchises <span
+					class="rightify">$2,000</span><br>With 4 Franchises <span class="rightify">$3,200</span><br>With
+				MEGAMART <span class="rightify">$4,000</span><br>Mortgage Value <span
+					class="rightify">$215</span><br>Franchises cost <span class="rightify">$150
+					each</span><br>Megamarts, $150 plus 4 franchises
+			</div>
+			<div class="deedish" id="9deed" style="background-color:
+                rgb(255, 153, 153);">
+				<div id="9closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>PlumpyNut<br>RENT <span
+					class="rightify">$90</span><br>With 1 Franchise <span class="rightify">$900</span><br>With 2
+				Franchises <span class="rightify">$1,350</span><br>With 3 Franchises <span
+					class="rightify">$2,250</span><br>With 4 Franchises <span class="rightify">$3,600</span><br>With
+				MEGAMART <span class="rightify">$4,500</span><br>Mortgage Value <span
+					class="rightify">$230</span><br>Franchises cost <span class="rightify">$150
+					each</span><br>Megamarts, $150 plus 4 franchises
+			</div>
+			<div class="deedish" id="12deed" style="background-color:rgb(204, 255,
+                255);">
+				<div id="12closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Mightylight<br>RENT <span
+					class="rightify">$100</span><br>With 1 Franchise <span class="rightify">$1,000</span><br>With 2
+				Franchises <span class="rightify">$1,500</span><br>With 3 Franchises <span
+					class="rightify">$2,500</span><br>With 4 Franchises <span class="rightify">$4,000</span><br>With
+				MEGAMART <span class="rightify">$5,000</span><br>Mortgage Value <span
+					class="rightify">$235</span><br>Franchises cost <span class="rightify">$200
+					each</span><br>Megamarts, $200 plus 4 franchises
+			</div>
+			<div class="deedish" id="13deed" style="background-color:rgb(204, 255,
+                255);">
+				<div id="13closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Sun Shines for All<br>RENT <span
+					class="rightify">$110</span><br>With 1 Franchise <span class="rightify">$1,100</span><br>With 2
+				Franchises <span class="rightify">$1,650</span><br>With 3 Franchises <span
+					class="rightify">$2,750</span><br>With 4 Franchises <span class="rightify">$4,400</span><br>With
+				MEGAMART <span class="rightify">$5,500</span><br>Mortgage Value <span
+					class="rightify">$240</span><br>Franchises cost <span class="rightify">$200
+					each</span><br>Megamarts, $200 plus 4 franchises
+			</div>
+			<div class="deedish" id="14deed" style="background-color:rgb(204, 255,
+                255);">
+				<div id="14closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>United Villages<br>RENT <span
+					class="rightify">$120</span><br>With 1 Franchise <span class="rightify">$1,200</span><br>With 2
+				Franchises <span class="rightify">$1,800</span><br>With 3 Franchises <span
+					class="rightify">$3,000</span><br>With 4 Franchises <span class="rightify">$4,800</span><br>With
+				MEGAMART <span class="rightify">$6,000</span><br>Mortgage Value <span
+					class="rightify">$250</span><br>Franchises cost <span class="rightify">$200
+					each</span><br>Megamarts, $200 plus 4 franchises
+			</div>
+			<div class="deedish" id="15deed" style="background-color:rgb(204, 255,
+                255);">
+				<div id="15closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Wizzit<br>RENT <span
+					class="rightify">$130</span><br>With 1 Franchise <span class="rightify">$1,300</span><br>With 2
+				Franchises <span class="rightify">$1,950</span><br>With 3 Franchises <span
+					class="rightify">$3,250</span><br>With 4 Franchises <span class="rightify">$5,200</span><br>With
+				MEGAMART <span class="rightify">$6,500</span><br>Mortgage Value <span
+					class="rightify">$255</span><br>Franchises cost <span class="rightify">$300
+					each</span><br>Megamarts, $300 plus 4 franchises
+			</div>
+			<div class="deedish" id="18deed" style="background-color:rgb(225,
+                3, 252);">
+				<div id="18closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Unitus<br>RENT <span
+					class="rightify">$140</span><br>With 1 Franchise <span class="rightify">$1,400</span><br>With 2
+				Franchises <span class="rightify">$2,100</span><br>With 3 Franchises <span
+					class="rightify">$3,500</span><br>With 4 Franchises <span class="rightify">$5,600</span><br>With
+				MEGAMART <span class="rightify">$7,000</span><br>Mortgage Value <span
+					class="rightify">$275</span><br>Franchises cost <span class="rightify">$300
+					each</span><br>Megamarts, $300 plus 4 franchises
+			</div>
+			<div class="deedish" id="20deed" style="background-color:rgb(225,
+                3, 252);">
+				<div id="20closebutton" style="position:absolute; right:0px; top:0px;"
+					onclick="setHidden(this.parentNode);">[x]</div>Kiva<br>RENT <span
+					class="rightify">$150</span><br>With 1 Franchise <span class="rightify">$1,500</span><br>With 2
+				Franchises <span class="rightify">$2,250</span><br>With 3 Franchises <span
+					class="rightify">$3,750</span><br>With 4 Franchises <span class="rightify">$6,000</span><br>With
+				MEGAMART <span class="rightify">$7,500</span><br>Mortgage Value <span
+					class="rightify">$300</span><br>Franchises cost <span class="rightify">$300
+					each</span><br>Megamarts, $300 plus 4 franchises
+			</div>
+		</div>
+		<!-- DEEDBOX END -->
+
+
+
 	</div>
-	
-	<!-- DEEDTEMPLATE -->
-	<div id="deedtemplate">
-		<div class="deed" id="IDdeed">
-		<h2 class="vh2" style="background-color: WHITE;">TITLE<span class="close" id="IDclosebutton" onclick="hideDeed(&#39;closeID&#39;);hideInfo();">[x]</span></h2>
-		<table><tbody><tr>
-			<td class="deedimage"><img src="assets/DEEDIMAGE">
-			</td>
-			<td class="deedproperties"> 
-				<div>Sells</div>
-				<div>Quantity</div>
-				<div>Unit Price </div>
-				<div>Total Sale </div>
-				<div> </div>
-				<div> </div>
-			</td>
-			<td class="deedvalues">
-				<div>TYPE</div>
-				<div>QUANTITY </div>
-				<div>UNITPRICE</div>
-				<div>TOTALSALE</div>
-				<div></div>
-				<div></div>
-			</td>
-		</tr></tbody></table>
-		 <p class="deedscription">DESCRIPTION</p>
-		</div>
-	</div>
-	<!-- DEEDTEMPLATE -->
-	<!-- Inventory Template -->
-	<div id="inventorytemplate">
-		<table class="inventorytable">
-			<tbody><tr>
-				<td class="invlabel">LABEL1(s)</td><td class="invquant">QUANT1</td>
-				<td class="invlabel">LABEL2(s)</td><td class="invquant">QUANT2</td>
-				<td class="invlabel">LABEL3(s)</td><td class="invquant">QUANT3</td>
+
+
+	<!-- DEEDSTABLE -->
+	<table id="deedstable">
+		<tbody>
+			<tr>
+				<td>id</td>
+				<td>x</td>
+				<td>y</td>
+				<td>Name</td>
+				<td>start-up
+					cost</td>
+				<td>rent</td>
+				<td>franchise
+					1</td>
+				<td>franchise
+					2</td>
+				<td>franchise
+					3</td>
+				<td>franchise
+					4</td>
+				<td>megamart</td>
+				<td>mortgage</td>
+				<td>franchise
+					cost</td>
+				<td>colorid</td>
 			</tr>
 			<tr>
-				<td class="invlabel">LABEL4(s)</td><td class="invquant">QUANT4</td>
-				<td class="invlabel">LABEL5(s)</td><td class="invquant">QUANT5</td>
-				<td class="invlabel">LABEL6(s)</td><td class="invquant">QUANT6</td>
+				<td>1</td>
+				<td>5</td>
+				<td>5</td>
+				<td>Panango</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td class="invlabel">LABEL7(s)</td><td class="invquant">QUANT7</td>
-				<td class="invlabel">LABEL8(s)</td><td class="invquant">QUANT8</td>
-				<td class="invlabel">LABEL9(s)</td><td class="invquant">QUANT9</td>
+				<td>2</td>
+				<td>4</td>
+				<td>5</td>
+				<td>Villager</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
-		</tbody></table>
-	</div>
-	
-	<!-- Inventory  Template END -->
-	
-	<!-- VillagerCardTemplate -->
-	<div id="villagercardtemplate">
-		<div id="villagercardID" class="villager">
-			<h2 class="vh2">Villager <div id="villagercardclosebuttonID" class="close" onclick="villagercard2(getCurrentPlayer(), 999 );">[x]</div></h2>
-			<p>CARDMESSAGE</p>
-		</div>
-	</div>
-    <!-- VillagerCardTemplate END-->
-	<!-- NewsCardTemplate -->
-	<div id="newscardtemplate">
-		<div id="newscardID" class="news">
-			<h2 class="vh2">News <div id="newscardclosebuttonID" class="close" onclick="newscard(getCurrentPlayer(), 999 );">[x]</div></h2>
-			<p>CARDMESSAGE</p>
-		</div>
-	</div>
-	<!-- NewsCardTemplate END-->
-	<!-- UpgradeTemplate -->
-	<div id="upgradelistitemtemplate">
-		<li> <input type="button" class="button button2" onclick="buyUpgrade(999);" style="background-color:WHITE;" id="PLAYERdeedID" value="Upgrade TITLE for $UPPRICE"></li>
-	</div>	
-	<!-- UpgradeTemplate -->
-	
-	<div id="deedstablewrapper">
-		<!-- DEEDSTABLE -->
-		
-		<!-- DEEDSTABLE END -->
-	</div>
+			<tr>
+				<td>3</td>
+				<td>3</td>
+				<td>5</td>
+				<td>News</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>2</td>
+				<td>5</td>
+				<td>Healthy Cities Sanitation</td>
+				<td>400</td>
+				<td>40</td>
+				<td>400</td>
+				<td>600</td>
+				<td>1,000</td>
+				<td>1,600</td>
+				<td>2,000</td>
+				<td>200</td>
+				<td>100</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>1</td>
+				<td>5</td>
+				<td>CFWShops</td>
+				<td>410</td>
+				<td>60</td>
+				<td>600</td>
+				<td>900</td>
+				<td>1,500</td>
+				<td>2,400</td>
+				<td>3,000</td>
+				<td>205</td>
+				<td>100</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>0</td>
+				<td>5</td>
+				<td>Villager</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>0</td>
+				<td>4</td>
+				<td>Aravind Eye Care</td>
+				<td>420</td>
+				<td>70</td>
+				<td>700</td>
+				<td>1,050</td>
+				<td>1,750</td>
+				<td>2,800</td>
+				<td>3,500</td>
+				<td>210</td>
+				<td>150</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>0</td>
+				<td>3</td>
+				<td>Kickstart</td>
+				<td>430</td>
+				<td>80</td>
+				<td>800</td>
+				<td>1,200</td>
+				<td>2,000</td>
+				<td>3,200</td>
+				<td>4,000</td>
+				<td>215</td>
+				<td>150</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>0</td>
+				<td>2</td>
+				<td>PlumpyNut</td>
+				<td>460</td>
+				<td>90</td>
+				<td>900</td>
+				<td>1,350</td>
+				<td>2,250</td>
+				<td>3,600</td>
+				<td>4,500</td>
+				<td>230</td>
+				<td>150</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>0</td>
+				<td>1</td>
+				<td>News</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>0</td>
+				<td>0</td>
+				<td>Villager</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>12</td>
+				<td>1</td>
+				<td>0</td>
+				<td>Mightylight</td>
+				<td>470</td>
+				<td>100</td>
+				<td>1,000</td>
+				<td>1,500</td>
+				<td>2,500</td>
+				<td>4,000</td>
+				<td>5,000</td>
+				<td>235</td>
+				<td>200</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>2</td>
+				<td>0</td>
+				<td>Sun Shines for All</td>
+				<td>480</td>
+				<td>110</td>
+				<td>1,100</td>
+				<td>1,650</td>
+				<td>2,750</td>
+				<td>4,400</td>
+				<td>5,500</td>
+				<td>240</td>
+				<td>200</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td>3</td>
+				<td>0</td>
+				<td>United Villages</td>
+				<td>500</td>
+				<td>120</td>
+				<td>1,200</td>
+				<td>1,800</td>
+				<td>3,000</td>
+				<td>4,800</td>
+				<td>6,000</td>
+				<td>250</td>
+				<td>200</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td>4</td>
+				<td>0</td>
+				<td>Wizzit</td>
+				<td>510</td>
+				<td>130</td>
+				<td>1,300</td>
+				<td>1,950</td>
+				<td>3,250</td>
+				<td>5,200</td>
+				<td>6,500</td>
+				<td>255</td>
+				<td>300</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td>5</td>
+				<td>0</td>
+				<td>Villager</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>17</td>
+				<td>5</td>
+				<td>1</td>
+				<td>News</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>18</td>
+				<td>5</td>
+				<td>2</td>
+				<td>Unitus</td>
+				<td>550</td>
+				<td>140</td>
+				<td>1,400</td>
+				<td>2,100</td>
+				<td>3,500</td>
+				<td>5,600</td>
+				<td>7,000</td>
+				<td>275</td>
+				<td>300</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>19</td>
+				<td>5</td>
+				<td>3</td>
+				<td>Villager</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>20</td>
+				<td>5</td>
+				<td>4</td>
+				<td>Kiva</td>
+				<td>600</td>
+				<td>150</td>
+				<td>1,500</td>
+				<td>2,250</td>
+				<td>3,750</td>
+				<td>6,000</td>
+				<td>7,500</td>
+				<td>300</td>
+				<td>300</td>
+				<td>4</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<!-- DEEDSTABLE END -->
+
 	<!-- NEWS TABLE -->
-	<div id="newstablewrapper">
-	</div>
-	<!-- NEWS TABLE END --> 
+	<table id="newstable">
+
+		<tbody>
+			<tr>
+				<td>id</td>
+				<td>News Cards</td>
+				<td>fromBank</td>
+				<td>toBank</td>
+				<td>fromPlayers</td>
+				<td>toPlayers</td>
+				<td>move</td>
+				<td>moveto</td>
+				<td>payperFranchise</td>
+				<td>payperMegamart</td>
+				<td>rollMultiple</td>
+				<td>rentMultiple</td>
+				<td>collectGo</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Terrorist bombs storefronts and insurance didn't
+					cover acts of terrorism $40 per franchise, $115 per megamart</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>40</td>
+				<td>115</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Ashoka Grant collect $200</td>
+				<td>200</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>VC invests in your enterprise collect $100</td>
+				<td>100</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Grand Internet Cafe Opening; Collect $50 from
+					every player</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>50</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Oprah hilights your efforts; Collect $100</td>
+				<td>100</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>You won Business Innovators Award; Collect $10</td>
+				<td>10</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>From Sale of Biodiesel you get $45</td>
+				<td>45</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>Moratorium on US food subsidies sky rockets
+					demand for local agriculture; Collect $100</td>
+				<td>100</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>Advance to Panango (Collect $200)</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>Bureaucrats demand bribe for Building Permit.
+					Pay $150</td>
+				<td>&nbsp;</td>
+				<td>150</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>Govt bombs school because they mistook it for
+					terrorist training camp. Pay $100</td>
+				<td>100</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>12</td>
+				<td>Local bureaucrats have 'Come to Jesus'
+					experience and refund bribe; Collect $20</td>
+				<td>20</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>Cops charge toll fee; Pay $50</td>
+				<td>&nbsp;</td>
+				<td>50</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td>Acumen Fund grant; Collect $25</td>
+				<td>25</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<!-- NEWS TABLE END -->
 	<!-- VILLAGER TABLE -->
-	<div id="villagertablewrapper">
-	</div>
-	 <!-- VILLAGER TABLE END -->
-	 
-	<!-- PLAYER TABLE -->
-	<div id="playertablewrapper">
-	</div>
-	 <!-- PLAYER TABLE END -->
-		
+	<table id="villagertable">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>Villager
+					Cards</td>
+				<td>fromBank</td>
+				<td>toBank</td>
+				<td>fromPlayers</td>
+				<td>toPlayers</td>
+				<td>move</td>
+				<td>moveto</td>
+				<td>payperFranchise</td>
+				<td>payperMegamart</td>
+				<td>rollMultiple</td>
+				<td>rentMultiple</td>
+				<td>collectGo</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Advance to Aravind Eye Care.<span>&nbsp;
+					</span>If you pass Panango, collect $200</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>7</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>IMF Debt lifted from country; Refund of taxes.
+					Collect $150</td>
+				<td>150</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Pay VAT Tax of $15</td>
+				<td>&nbsp;</td>
+				<td>15</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Auditor Fines you for sloppy accounting; For
+					Each Franchise Pay $25; For Each Megamart Pay $100.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>25</td>
+				<td>100</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Go Back 3 Spaces.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>-3</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>You've been elected Chairman of the Chamber of
+					Commerce; Pay each player $50</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>50</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>Advance to Go (Collect $200)</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>Fidelity Emerging Markets Fund pays you Dividend
+					of $50</td>
+				<td>50</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>Advance to Mightylight</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>12</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>Advance to Kiva</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>20</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>1</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<!-- VILLAGER TABLE END -->
 	<!-- COLOR TABLE BEGIN -->
-	<div id="colortablewrapper">
-	</div>
-	<!-- COLOR TABLE END -->    
-	
-<!-- DATA END -->    
-<!-- Notes -->
+	<table id="colortable">
 
-<div id="notes">
-<h2 class="vh2">Village Board Game 0.02</h2>
+		<tbody>
+			<tr>
+				<td>Colorid</td>
 
-<span>(29 March 2008) The CSS and Javascript are updated to work with IE, Safari, in addition to Firefox 2+. Mind you this is all tested on Windows.  If Mac users out there are having 
-issues let us know: boardgame1 [at] villagethegame.com.</span>
-<span>Most of the rules are based on Monopoly type rules. The gameboard is smaller and you only roll one die.</span>
-<p>Send Feedback: boardgame1 [at] villagethegame.com</p>
-<p id="donate">Support Development of this Prototype:
-</p><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_donations">
-<input type="hidden" name="business" value="donate@villagethegame.com">
-<input type="hidden" name="item_name" value="Fund Village the Game">
-<input type="hidden" name="no_shipping" value="0">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="tax" value="0">
-<input type="hidden" name="lc" value="US">
-<input type="hidden" name="bn" value="PP-DonationsBF">
-<input type="image" src="assets/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="assets/pixel.gif" width="1" height="1">
-</form>
-</div>
+				<td>
+					rgb(255, 255, 255)</td>
+			</tr>
+
+			<tr>
+				<td>1</td>
+
+				<td>
+					rgb(255, 153, 255)</td>
+			</tr>
+
+			<tr>
+				<td>2</td>
+
+				<td>
+					rgb(255, 153, 153)</td>
+			</tr>
+
+			<tr>
+				<td>3</td>
+
+				<td>rgb(204, 255,
+					255)</td>
+			</tr>
+
+			<tr>
+				<td>4</td>
+
+				<td>rgb(225,
+					3, 252)</td>
+			</tr>
+
+			<tr>
+				<td>5</td>
+
+				<td>rgb(233, 233,
+					233)</td>
+			</tr>
+
+			<tr>
+				<td>6</td>
+
+				<td>rgb(255, 204,
+					102)</td>
+			</tr>
+
+			<tr>
+				<td>7</td>
+
+				<td>rgb(255, 102,
+					102)</td>
+			</tr>
+
+			<tr>
+				<td>8</td>
+
+				<td>rgb(255, 255,
+					153)</td>
+			</tr>
+
+			<tr>
+				<td>9</td>
+
+				<td>rgb(153, 255,
+					153)</td>
+			</tr>
+
+			<tr>
+				<td>
+					10</td>
+
+				<td>rgb(204, 204,
+					255)</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<!-- COLOR TABLE END -->
+
+
+	<script type="text/javascript">
+		function get(id) {
+			return document.getElementById(id);
+		}
+
+		var globals = {
+			auctioning: false,
+			auctiondeedid: '',
+			dmov: get('mover'),
+			buy: get('buybutton'),
+			auction: get('auctionbutton'),
+			startturn: get('startturn'),
+			endturn: get('finishturnbutton'),
+			deedstable: get("deedstable"),
+			villagertable: get('villagertable'),
+			newstable: get('newstable'),
+			board: get("board1"),
+			ctable: get('colortable'),
+			errorlog: get('errorlog'),
+			monohash: {},  // use this to track monopoly status for each deed
+			currentplayer: "Fish",
+			currentdeed: "",
+			rollarray: ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '2,1', '2,2', '2,3', '2,4', '2,5', '2,6', '3,1', '3,2', '3,3', '3,4', '3,5', '3,6', '4,1', '4,2', '4,3', '4,4', '4,5', '4,6', '5,1', '5,2', '5,3', '5,4', '5,5', '5,6', '6,1', '6,2', '6,3', '6,4', '6,5', '6,6'],
+
+			villagerorder: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+			newsorder: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+			villagerindex: 0,
+			newsindex: 0,
+			rollPayment: {}
+		};
+
+		function startGame() {
+			globals.villagerorder.sort(randOrd);
+			globals.newsorder.sort(randOrd);
+			buildMonoHash();
+			buildBoard();
+			buildDeeds();
+			buildCards();
+
+			setCurrentPlayer(globals.currentplayer);
+			setVisible('startturn');
+			delete startGame;
+		}
+
+		function randOrd() {
+			return (Math.round(Math.random() - 0.5));
+		}
+
+		function endTurn() {
+			// control basic game logic here.
+			changePlayer();
+			updateTurnPanel('finishedturn');
+			//updateChildren();
+		}
+
+		function changePlayer() {
+			for (var i = 0; i < globals.dmov.player.length; i++) {
+				if (globals.dmov.player[i].checked) {
+					globals.dmov.player[i].checked = false;
+					var id = (i + 1) % globals.dmov.player.length;
+					globals.dmov.player[id].checked = true;
+					setCurrentPlayer(globals.dmov.player[id]);
+					return;
+				}
+			}
+		}
+
+		function getCurrentPlayer() {
+			var dmov = get('mover');
+			var p = "";
+			for (var i = 0; i < dmov.player.length; i++) {
+				if (dmov.player[i].checked) { p = dmov.player[i].value; }
+			}
+			return p;
+		}
+
+		function getPlayer(i) {
+			return globals.dmov.player[i].value;
+		}
+
+		function isCurrentPlayer(p) {
+			if (getCurrentPlayer() == p) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		function setCurrentPlayer(p) {
+			globals.currentplayer = p;
+			for (i = 0; i < globals.dmov.player.length; i++) {
+				if (globals.dmov.player[i].value == p) {
+					globals.dmov.player[i].checked = true;
+					return;
+				}
+			}
+		}
+
+		function setVisible(obj) {
+			if (typeof obj == 'string') {
+				obj = get(obj);
+			}
+			obj.style.visibility = 'visible';
+			return;
+		}
+
+		function setEverythingVisible() {
+			for (i = 1; i < globals.deedstable.rows.length; i++) {
+				setVisible(i + 'buy');
+				setVisible(i + 'upgrade');
+				setVisible(i + 'sellup');
+				setVisible(i + 'mortgage');
+				setVisible(i + 'unmortgage');
+			}
+		}
+
+		function setHidden(obj) {
+			if (typeof obj == 'string') {
+				obj = get(obj);
+			}
+			obj.style.visibility = 'hidden';
+			return;
+		}
+
+		function getCell(table, i, j) {
+			return table.rows[j].cells[i];
+		}
+
+		function indexCell(table, i, j) {
+			var cell = getCell(table, i, j);
+			var str = '\(' + i + '\,' + j + '\) ';
+			cell.innerHTML = str + cell.innerHTML;
+		}
+
+		function indexTable() {
+			var board = get('board1');
+			//this is kinda funky cuz we got to do math on the indexes.
+			for (i = 0; i < board.rows[i].cells.length; i++) {
+				for (j = 0; j < board.rows.length; j++) {
+					indexCell(board, i, j);
+				}
+			}
+		}
+
+		function rollDice(r) {
+
+			var p = getCurrentPlayer();
+			var roll = randomRoll();
+			if (r != undefined) { roll = r; }
+			alert(p + " rolls a " + roll[0]);
+			move(roll, true);
+			//updateTurnPanel();
+			return roll[0] + roll[1];
+		}
+
+		function updateTurnPanel(state) {
+			// set things visible and hidden according to state of game.
+			// lots a rules here.
+			var p = getCurrentPlayer();
+			if (state == 'finishedturn') {
+				setVisible('startturn');
+				setHidden('upgradebutton');
+				setHidden('sellupgradebutton');
+				setHidden('mortgagebutton');
+				setHidden('tradebutton');
+				setHidden('finishturnbutton');
+			} else if (state == 'buying') {
+				setHidden('finishturnbutton');
+				setHidden('startturn');
+				setHidden('rollagainbutton');
+				setHidden('tradebutton');
+				//setVisible('buywindow');
+			} else if (state == 'auction') {
+
+			} else if (state == 'carding') {
+				setHidden('finishturnbutton');
+				setHidden('rollagainbutton');
+				setHidden('tradebutton');
+				setHidden('mortgagebutton');
+				setHidden('unmortgagebutton');
+				setHidden('sellupgradebutton');
+				setHidden('upgradebutton');
+			} else {
+				setHidden('startturn');
+				setVisible('tradebutton');
+				setVisible('finishturnbutton');
+				if (globals.auctioning) {
+					setHidden('finishturnbutton');
+					setHidden('rollagainbutton');
+					setHidden('startturn');
+				}
+				if (hasUndevelopedMonopoly(p)) {
+					setVisible('upgradebutton');
+				} else {
+					setHidden('upgradebutton');
+				}
+				if (hasUpgrades(p)) {
+					setVisible('sellupgradebutton');
+				} else {
+					setHidden('sellupgradebutton');
+				}
+				if (hasUnMortgagedProperty(p)) {
+					setVisible('mortgagebutton');
+				} else {
+					setHidden('mortgagebutton');
+				}
+				if (hasMortgagedProperty(p)) {
+					setVisible('unmortgagebutton');
+				} else {
+					setHidden('unmortgagebutton');
+				}
+			}
+		}
+
+		function bankruptcy(fromP, toP) {
+			//transfer properties in their current state
+			alert(fromP + " is bankrupt!");
+			for (var i = 1; i < globals.deedstable.rows.length; i++) {
+				if (getOwner(i) == fromP) {
+					setOwner(i, top);
+					updateMonoState(i);
+				}
+			}
+			alert(fromP + "'s properties transferred to " + top);
+		}
+
+		function hasUndevelopedMonopoly(p) {
+			var does = false;
+			var deed = undefined;
+			for (i = 1; i < globals.deedstable.rows.length; i++) {
+				if (p == getOwner(i)) {
+					deed = get(i + 'deed');
+					if (deed.monostate > -1 && deed.monostate < 5) {
+						return true;
+					}
+				}
+			}
+			return does;
+		}
+
+		function hasMortgagedProperty(p) {
+			var does = false;
+			var deed = undefined;
+			for (i = 1; i < globals.deedstable.rows.length; i++) {
+				if (p == getOwner(i)) {
+					deed = globals.deedstable.rows[i];
+					if (deed.mortgaged) {
+						return true;
+					}
+				}
+			}
+			return does;
+		}
+
+		function hasUnMortgagedProperty(p) {
+			var does = false;
+			var deed = undefined;
+			for (i = 1; i < globals.deedstable.rows.length; i++) {
+				if (p == getOwner(i)) {
+					deed = globals.deedstable.rows[i];
+					if (!deed.mortgaged) {
+						return true;
+					}
+				}
+			}
+			return does;
+		}
+
+		function hasUpgrades(p) {
+			var does = false;
+			var deed = undefined;
+			for (i = 1; i < globals.deedstable.rows.length; i++) {
+				if (p == getOwner(i)) {
+					deed = get(i + 'deed');
+					if (deed.monostate > 0) {
+						return true;
+					}
+				}
+			}
+			return does;
+		}
+
+		function randomRoll() {
+			//gen two random number beteen 1 nand 6
+			var roll = new Array();
+			var raw = Math.floor(Math.random() * 36);
+			roll = globals.rollarray[raw].split(',');
+			roll[0] = parseInt(roll[0]);
+			roll[1] = parseInt(roll[1]);
+			return roll;
+		}
+
+		function move(roll, okGo) {
+			var state = undefined;
+			// need to update roll to array.
+			if (okGo == undefined) { okGo = true; }
+			var p = "";
+			for (var i = 0; i < globals.dmov.player.length; i++) {
+				if (globals.dmov.player[i].checked) { p = globals.dmov.player[i].value; }
+			}
+			var token = get(p);
+			//making it a single dice thing
+			var r = roll[0];
+			if (isNaN(r)) { r = roll; }  // some function that call move may still be passing scalar for roll
+			var id = getCurrentSpace(p);
+			var newid = (id + parseInt(r));
+			if (okGo && newid > 20) {
+				doGo(p);
+				newid++;
+			}
+
+			if (newid < 0) {
+				newid += 20;
+			}
+
+			newid = newid % 21;
+
+			get(newid + "cage").appendChild(token);
+			var mult = 1;
+			switch (newid) {
+				case 1:
+					doGo(p);
+					break;
+				case 2:
+					showVillagerCard(p);
+					break;
+				case 3:
+					showNewsCard(p);
+					break;
+				case 6:
+					showVillagerCard(p);
+					break;
+				case 10:
+					showNewsCard(p);
+					break;
+				case 11:
+					showVillagerCard(p);
+					break;
+				case 16:
+					showVillagerCard(p);
+					break;
+				case 17:
+					showNewsCard(p);
+					break;
+				case 19:
+					showVillagerCard(p);
+					break;
+				default:
+					if (getOwner(newid) != '') { // if there is an owner
+						payRent(p, getOwner(newid), newid, mult, r);
+					} else {
+						state = 'buying';
+						showBuyWindow(newid, p);
+					}
+					break;
+			}
+			updateTurnPanel(state);
+		}
+
+		function showBuyWindow(sid, p) {
+			// show deed simultaneously
+			globals.currentdeed = sid;
+			showDeed(sid);
+			var deed = get(sid + 'deed');
+			setHidden(sid + 'closebutton');
+			var buy = get('buywindow');
+			deed.appendChild(buy);
+			setVisible(buy);
+		}
+
+		function showTradeTable() {
+
+		}
+
+		function buildTradeTable() {
+			//display dialog to choose trader 2. Trader 1 is currentplayer.
+			//call func to build list of deeds and money offering. use borders to create flow.
+
+
+			var str = '<table id="tradetable"><tr> <td> <table><tr> <td>Traders:<span id="playerlist"></span></td></tr>';
+			str += '<tr><td><span id="player1"></span><span onclick="upOffer(1,10);">[+10]</span><span onclick="upOffer(1,100);">[+100]</span><span onclick="upOffer(1,500);">[+500]</span>';
+			str += '<span id="cashoffer1">0</span></td></tr></table></td></tr></table>';
+			get('tradetable').innerHTML = str;
+		}
+
+		function getNumUpgrades(id) {
+			var upgradebox = get(id + 'upgrade');
+			if (upgradebox.innerHTML.match(/[M]/) != null) { return 5; }
+			else {
+				return upgradebox.getElementsByTagName('span').length;
+			}
+		}
+
+		function buildBoard() {
+
+			for (var i = 1; i < globals.deedstable.rows.length; i++) {
+				var x = parseInt(globals.deedstable.rows[i].cells[1].innerHTML);
+				var y = parseInt(globals.deedstable.rows[i].cells[2].innerHTML);
+				globals.board.rows[y].cells[x].innerHTML = makeSpace(i);
+			}
+			//add player tokens.
+			resetTokens();
+		}
 
 
 
-</div> <!-- END MAIN-WRAPPER -->
+		function makeSpace(i) {
+			var id = parseInt(globals.deedstable.rows[i].cells[0].innerHTML);
+			var t = globals.deedstable.rows[i].cells[3].innerHTML;
+			var p = globals.deedstable.rows[i].cells[4].innerHTML;
+			var d = "";
+			var deedstr = "";
+			if (!isNaN(parseInt(p))) {
+				d = "$";
+				deedstr = "onClick=\"setVisible(\'" + id + "deed\');\"";
+			}
+			var c = 0;
+			var r = 'rgb(255,255,255)';
+			try {
+				c = parseInt(globals.deedstable.rows[i].cells[13].innerHTML);
+				if (isNaN(c)) { c = 0; }
+				r = globals.ctable.rows[c].cells[1].innerHTML;
+			} catch (e) {
+				r = 'rgb(255,255,255)';
+			}
+			var s = "<div  class=\"space\" style=\"background-color: " + r + "\" " + deedstr + ">";
+			s += "<div>&nbsp;<span id=\'" + id + "upgrade\'><\/span><\/div>";
+			s += "<div><span id=\'" + id + "title\'  >" + t + "<\/div>";
+			s += "<div>&nbsp;<span id=\'" + id + "cage\' colspan='2'></span></div>";
+			if (!isNaN(p)) {
+				s += "<div class=\"pricediv\">&nbsp;<span id=\'" + id + "own\'><\/span>" + d + "<span id=\'" + id + "price\'>" + p + "<\/span><\/div>";
+			}
+			s += "<\/div>";
+			//alert(s);
+			return s;
+		}
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-5656121-8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+		function getPlayers() {
+			var players = new Array();
+			for (var i = 0; i < globals.dmov.length; i++) {
+				players.push(globals.dmov.player[i].value);
+			}
+			return players;
+		}
 
-  gtag('config', 'UA-5656121-8');
-</script>
+		function resetTokens() {
+			var players = getPlayers();
+			var toks = "<img class=\"token\" id=\"" + players[0] + "\" src=\"Kenya_files/icons8-fish-48.png\">";
+			toks += "<img class=\"token\" id=\"" + players[1] + "\" src=\"Kenya_files/icons8-pig-48.png\">";
+			toks += "<img class=\"token\" id=\"" + players[2] + "\" src=\"Kenya_files/icons8-bear-64.png>\">";
+			//get("1cage").innerHTML = "<span id=\"tokenD\" class=\"token\"  >&nbsp;<\/span><span id=\"tokenS\" class=\"token\" >&nbsp;<\/span><span id=\"tokenJ\" class=\"token\" >&nbsp;<\/span>";
+			get("1cage").innerHTML = toks;
+		}
+
+		function hideDeed(id) {
+			var deed = get(id + "deed");
+			deed.style.visibility = "hidden";
+		}
+
+		function buildDeeds() {
+			var deedbox = get("deedbox");
+			deedbox.innerHTML = "";
+			var divbaby = "";
+			var color = "";
+			var c = "";
+			var deed = null;
+			for (var i = 1; i < globals.deedstable.rows.length; i++) {
+				deed = globals.deedstable.rows[i];
+				c = deed.cells[8].innerHTML;
+				color = getColor(i);
+				if (deed.cells[8].innerHTML == "") {
+					continue;
+				}
+				divbaby += "<div class=\"deedish\" id=\'" + i + "deed\' style=\"background-color:" + color + ";\">";
+				divbaby += "<div id=\"" + i + "closebutton\"  style=\"position:absolute; right:0px; top:0px;\" onclick=\"setHidden(this.parentNode);\">[x]</div>";
+				divbaby += deed.cells[3].innerHTML;
+				divbaby += "<br/>RENT <span class=\"rightify\">$" + deed.cells[5].innerHTML + "</span>";
+				divbaby += "<br/>With 1 Franchise <span class=\"rightify\">$" + deed.cells[6].innerHTML + "</span>";
+				divbaby += "<br/>With 2 Franchises <span class=\"rightify\">$" + deed.cells[7].innerHTML + "</span>";
+				divbaby += "<br/>With 3 Franchises <span class=\"rightify\">$" + deed.cells[8].innerHTML + "</span>";
+				divbaby += "<br/>With 4 Franchises <span class=\"rightify\">$" + deed.cells[9].innerHTML + "</span>";
+				divbaby += "<br/>With MEGAMART <span class=\"rightify\">$" + deed.cells[10].innerHTML + "</span>";
+				divbaby += "<br/>Mortgage Value <span class=\"rightify\">$" + deed.cells[11].innerHTML + "</span>";
+				divbaby += "<br/>Franchises cost <span class=\"rightify\">$" + deed.cells[12].innerHTML + " each" + "</span>";
+				divbaby += "<br/>Megamarts, $" + deed.cells[12].innerHTML + " plus 4 franchises";
+				divbaby += "<\/div>";
+			}
+			deedbox.innerHTML += divbaby;
+			initColors();
+		}
+
+		function initColors() {
+			//give each deed a color id
+
+			for (i = 1; i < globals.deedstable.rows.length; i++) {
+				if (globals.deedstable.rows[i].cells[8].innerHTML == "") { continue; }
+				var deed = get(i + 'deed');
+				deed.colorid = globals.deedstable.rows[i].cells[13].innerHTML;
+				deed.style.backgroundcolor = getColor(deed.colorid);
+			}
+		}
+
+		function getColorId(id) {
+			return parseInt(globals.deedstable.rows[id].cells[13].innerHTML);
+		}
+
+		function getColor(id) {
+			var c = 0;
+			c = parseInt(globals.deedstable.rows[id].cells[13].innerHTML);
+			if (isNaN(c)) {
+				c = 0;
+				r = 'rgb(255,255,255)';
+			} else {
+				r = globals.ctable.rows[c].cells[1].innerHTML;
+			}
+			return r;
+		}
+
+		function updateTrader(trader) {
+			get('player2').innerHTML = trader;
+			//2. build list of deeds after player selected; or pre-generate and then add the right one.
+			var deedlist = makeDeedList(trader);
+
+			get('player1').innerHTML = getCurrentPlayer();
+			get('player2').innerHTML = trader;
+			get('owned2').innerHTML = deedlist;
+			setHidden('tradechoice');
+			setVisible('tradebox');
+		}
+
+		function showTradeChoice() {
+			var str = "<div>P1 trade with? <div>PARRAY</div></div>";
+			var trader1 = getCurrentPlayer();
+			var plist = "";
+			str = str.replace('P1', getCurrentPlayer());
+			for (var i = 0; i < globals.dmov.player.length; i++) {
+				if (globals.dmov.player[i].value == trader1) { continue; }
+				plist += '<input type="Checkbox" onclick="updateTrader(this.value);" value="' + globals.dmov.player[i].value + '">[' + globals.dmov.player[i].value + '] | ';
+			}
+			str = str.replace('PARRAY', plist);
+			get('tradechoice').innerHTML = str;
+			setVisible('tradechoice');
+		}
+
+		function trade() {
+			get('owned1').innerHTML = makeDeedList(getCurrentPlayer());
+			showTradeChoice();
+		}
+
+		function upOffer(id, cash) {
+			var coffer = parseInt(get('cashoffer' + id).innerHTML);
+			if (isNaN(coffer)) { coffer = 0; }
+			coffer += cash;
+			get('cashoffer' + id).innerHTML = coffer;
+		}
+
+		function testDeedList(pid) {
+			var node = makeDeedList(pid);
+			document.body.innerHTML += node;
+		}
+
+		function makeMortgageList(pid) {
+			//build list items with pid and sid built into id
+			var html = '<ul >';
+			for (var i = 1; i < 40; i++) {
+				var deed = globals.deedstable.rows[i];
+				if (pid == getOwner(i) && !deed.mortgaged) {
+					//add to list
+					var id = pid + 'deed' + i;
+					var t = get(i + 'title').innerHTML;
+					var color = getColor(getColorId(i));
+					html += '<li onclick="setHidden(this); mortgageDeed(' + i + ');" id="' + id + '"><span   >' + t + '</span></li>';
+				}
+			}
+			html += "</ul>";
+			return html;
+		}
+
+		function makeUnMortgageList(pid) {
+			//build list items with pid and sid built into id
+			var html = '<ul >';
+			for (var i = 1; i < 40; i++) {
+				var deed = globals.deedstable.rows[i];
+				if (pid == getOwner(i) && deed.mortgaged) {
+					//add to list
+					var id = pid + 'deed' + i;
+					var t = get(i + 'title').innerHTML;
+					var color = getColor(getColorId(i));
+					html += '<li onclick="setHidden(this); unMortgageDeed(' + i + ');" id="' + id + '"><span   >' + t + '</span></li>';
+				}
+			}
+			html += "</ul>";
+			return html;
+		}
 
 
-</body></html>
+
+		function makeDeedList(pid) {
+			//build list items with pid and sid built into id
+			var html = '<ul >';
+			for (i = 1; i < 40; i++) {
+				if (pid == getOwner(i)) {
+					//add to list
+					var id = pid + 'deed' + i;
+					var t = get(i + 'title').innerHTML;
+					var color = getColor(getColorId(i));
+					html += '<li onclick="offerDeed(this);" id="' + id + '"><span   >' + t + '</span></li>';
+				}
+			}
+			html += "</ul>";
+			return html;
+		}
+
+		function offerDeed(deed) {
+			//need to move li into selected box.
+			//determine which owned box it's in.
+
+			var parent = deed.parentNode.parentNode;
+			if (parent.id == 'owned1') {
+				globals.selectbox = get('selected1');
+			} else {
+				globals.selectbox = get('selected2');
+			}
+			//append to corresponding selected box.
+			globals.selectbox.appendChild(deed);
+
+		}
+
+		function acceptTrade() {
+			//Do accounting of money and deeds offered.
+			var player1 = get('player1').innerHTML;
+			var player2 = get('player2').innerHTML;
+			var selected1 = get('selected1');
+			var selected2 = get('selected2');
+			var msg = "P1 trades with P2 EXC1 for EXC2";
+			var exc1 = '';
+			var exc2 = '';
+			var cash1 = parseInt(get('cashoffer1').innerHTML);
+			var cash2 = parseInt(get('cashoffer2').innerHTML);
+			if (isNaN(cash1)) { cash1 = 0; }
+			if (isNaN(cash2)) { cash2 = 0; }
+
+			//then payplayers
+			if (cash1 > 0) {
+				exc1 += '$' + cash1;
+				payPlayer(player1, player2, cash1, false);
+			}
+
+			if (cash2 > 0) {
+				payPlayer(player2, player1, cash2, false); //very redundant but what the heck
+				exc2 += '$' + cash2;
+			}
+			//then setOwner on the deeds.
+			for (i = 0; i < selected1.childNodes.length; i++) {
+				deedid = selected1.childNodes[i].id;
+				deedid = deedid.split('deed')[1];
+				setOwner(deedid, player2);
+				exc1 += ', ' + get(deedid + 'title').innerHTML;
+			}
+
+			for (i = 0; i < selected2.childNodes.length; i++) {
+				deedid = selected2.childNodes[i].id;
+				deedid = deedid.split('deed')[1];
+				setOwner(deedid, player1);
+				exc2 += ', ' + get(deedid + 'title').innerHTML;
+			}
+			if (exc1[exc1.length - 1] == ',') exc1 = exc1.substring(0, exc1.length - 1);
+			if (exc2[exc2.length - 1] == ',') exc2 = exc2.substring(0, exc2.length - 1);
+			if (exc1[0] == ',') exc1 = exc1.substring(2, exc1.length);
+			if (exc2[0] == ',') exc2 = exc2.substring(2, exc2.length);
+			msg = msg.replace('EXC1', exc1);
+			msg = msg.replace('EXC2', exc2);
+			msg = msg.replace('P1', player1);
+			msg = msg.replace('P2', player2);
+			alert(msg);
+			//cleanout all the Trade objects.
+			clearTrade();
+			setHidden('tradebox');
+		}
+
+		function clearTrade() {
+			//clean out all the variables.
+			get('playerlist').innerHTML = "";
+			get('owned1').innerHTML = "";
+			get('owned2').innerHTML = "";
+			get('player1').innerHTML = "";
+			get('player2').innerHTML = "";
+			get('cashoffer1').innerHTML = "";
+			get('cashoffer2').innerHTML = "";
+			get('selected1').innerHTML = "";
+			get('selected2').innerHTML = "";
+			//?anything else?
+		}
+
+		function resetTrade() {
+			clearTrade();
+			trade();
+		}
+
+		function cancelTrade() {
+			clearTrade();
+			setHidden('tradebox');
+		}
+
+		function auctionDeed(id) {
+			globals.auctioning = true;
+			setHidden('buywindow');
+			hideDeed(id);
+			clearAuctionTable();
+			globals.auctiondeedid = id;
+			initBidders();
+			setVisible('auctiontable');
+			var deeddisplay = get('deeddisplay');
+			var deedhtml = get(id + 'deed').innerHTML;
+			deeddisplay.innerHTML = deedhtml;
+			var c = getColor(id);
+			deeddisplay.style.backgroundColor = c;
+			globals.currentdeed = "";
+			updateTurnPanel('auction');
+		}
+
+		function finishAuction() {
+			//get topbidder, topbid
+			var topbidder = get('topbidder').innerHTML;
+			var topbid = parseInt(get('topbid').innerHTML);
+			if (!isNaN(topbid) && (get(topbidder + 'score') != undefined)) {
+				payBank(topbidder, topbid);
+				setOwner(globals.auctiondeedid, topbidder);
+				var title = get(globals.auctiondeedid + 'title').innerHTML;
+				alert(topbidder + " buys " + title + " for $" + topbid + ".");
+			}
+			setHidden('auctiontable');
+			globals.auctioning = false;
+			updateTurnPanel();
+		}
+
+		function upBid(pindex, cash) {
+			//match index to player id
+			var bid = get('bid' + pindex);
+			var p = get('bidder' + pindex).innerHTML;
+			var score = parseInt(get(p + 'score').innerHTML);
+			var cbid = parseInt(bid.innerHTML);
+
+			if (isNaN(cbid)) { cbid = 0; }
+			var newbid = cbid + cash;
+			if (newbid > score) {
+				alert(p + " cannot afford bid.  Must mortgage or sell properties first.");
+				return;
+			} else {
+				cbid += cash;
+				bid.innerHTML = cbid;
+				updateTopBidder();
+			}
+		}
+
+		function clearAuctionTable() {
+			var deed = get('deeddisplay');
+			var topbid = get('topbid');
+			var topbidder = get('topbidder');
+			for (i = 1; i < 4; i++) {
+				get('bid' + i).innerHTML = '0';
+			}
+			deed.innerHTML = '';
+			topbid.innerHTML = 0;
+			topbidder.innerHTML = 'No one yet';
+			globals.auctiondeedid = '';
+		}
+
+		function initBidders() {
+			for (i = 0; i < globals.dmov.length; i++) {
+				var n = i + 1;
+				get('bidder' + n).innerHTML = globals.dmov[i].value; + ": $" + get(globals.dmov[i].value + 'score');
+				get(n + 'mortgage').innerHTML = "<span onclick=\"mortgage(\'" + globals.dmov[i].value + "\')\">[Mortgage]</span>";
+				get(n + 'sellupgrade').innerHTML = "<span onclick=\"startSellUpgrade(\'" + globals.dmov[i].value + "\')\">[Sell Upgrade]</span>";
+			}
+		}
+
+		function updateTopBidder() {
+			//make some array to go through
+			//old top bid and top bidder
+			var bid = get('topbid');
+			var topbidder = get('topbidder');
+			var topbid = parseInt(bid.innerHTML);
+			if (isNaN(topbid)) { topbid = 0; }
+
+			for (var i = 1; i <= globals.dmov.length; i++) {
+				var pbid = parseInt(get('bid' + i).innerHTML);
+				if (isNaN(pbid)) { return; }
+				if (pbid > topbid) {
+					bid.innerHTML = pbid;
+					topbidder.innerHTML = getPlayer(i - 1);
+				}
+			}
+		}
+
+		function getPrice(id) {
+			var price = globals.deedstable.rows[id].cells[4].innerHTML;
+			price = price.replace("", "");
+			return parseInt(price);
+		}
+
+		function buyDeed(id) {
+			var p = getCurrentPlayer();
+			var cash = parseInt(get(p + 'score').innerHTML);
+			var price = getPrice(id);
+			var bankscore = parseInt(get('bankscore').innerHTML);
+			if (price > cash) {
+				alert("Can't Afford Property. Cash=" + cash + " < Price=" + price);
+				return;
+			} else {
+				payBank(p, price);
+				get(id + 'own').innerHTML = "<span>\[" + p + "\]</span>";
+				get(id + 'own').owner = p;
+				updateMonoState(id);
+				updateTurnPanel();
+				globals.currentdeed = "";
+				hideDeed(id);
+				setHidden('buywindow');
+			}
+		}
+
+		function payRent(fromP, tP, id, mult, roll) {
+			if (fromP == tP) { return; }
+			var rentindex = 5;
+			var rent = 0;
+			if (isNaN(mult)) { mult = 1; }
+
+			//calculate rent based on number of franchises on property.
+			//get number of franchises from board. then use this to calc index for deedstable
+			var upgradebox = get(id + 'upgrade');
+			var numupgrades = upgradebox.getElementsByTagName('span').length;
+			if (upgradebox.innerHTML.match("[M]") != null) {
+				rentindex += 5;
+			} else { rentindex += numupgrades; }
+			//how best to distinguish between one franchise and one megamart
+			rent = parseInt(globals.deedstable.rows[id].cells[rentindex].innerHTML);
+			if (isNaN(rent)) {
+				alert(rentindex + globals.deedstable.rows[id].cells[rentindex].innerHTML);
+			}
+			if (get(id + 'deed').monostate == 0) { rent += rent; }
+			rent = mult * rent;
+			payPlayer(fromP, tP, rent);
+		}
+
+		function getNumOwned(colorid, p) {
+			if (globals.monohash[1] == undefined) { buildMonoHash(); }
+			var sum = 0;
+			for (i = 0; i < globals.monohash[colorid].length; i++) {
+				if (p == getOwner(globals.monohash[colorid][i])) { sum++; }
+			}
+			return sum;
+		}
+
+		function payBank(p, cash) {
+			var fromscore = parseInt(get(p + 'score').innerHTML);
+			var toscore = parseInt(get('bankscore').innerHTML);
+			fromscore -= cash;
+			toscore += cash;
+			get(p + 'score').innerHTML = fromscore;
+			get('bankscore').innerHTML = toscore;
+		}
+
+		function buildMonoHash() {
+			var colorid = '';
+			var deedid = '';
+			for (i = 1; i < globals.deedstable.rows.length; i++) {
+				colorid = globals.deedstable.rows[i].cells[13].innerHTML;
+				deedid = globals.deedstable.rows[i].cells[0].innerHTML;
+				if (colorid == "") { continue; }
+				if (globals.monohash[colorid] == undefined) { globals.monohash[colorid] = new Array(); }
+				globals.monohash[colorid].push(deedid);
+			}
+		}
+
+		function updateMonoState(id) {
+			if (globals.monohash[1] == undefined) { buildMonoHash(); }
+			// -1 == no monopoly.
+			// 0  == monopoly with no upgrades on this property.
+			// 1  == monopoly with 1 upgrade on this property. same for 2..4.
+			// 5  == monopoly with megamart on this property.
+
+			var deed = get(id + 'deed');
+			if (deed.monostate == -1 || deed.monostate == undefined) {
+				// check owner of each deed in monopoly.
+				var owner = getOwner(id);
+				var monopoly = false;
+				var color = getColorId(id);
+				var sum = 0;
+				var b = null;
+				for (i = 0; i < globals.monohash[color].length; i++) {
+					b = globals.monohash[getColorId(id)][i];
+					if (owner == getOwner(b)) { sum++; }
+				}
+				if (sum == globals.monohash[color].length) {
+					makeMonopoly(color, owner);
+				}
+			} else if (deed.monostate > -1) {
+				//get numb upgrades 
+				var state = getNumUpgrades(id);
+				deed.monostate = state;
+			}
+		}
+
+		function sellUpgrade(id) {
+
+			var upbox = get(id + 'upgrade');
+			//make sure upgrades are properly distributed across monopoly
+			if (mostDeveloped(id)) {
+				var kids = upbox.getElementsByTagName('span');
+				//get sell price and add to owner score.
+				var cash = parseInt(globals.deedstable.rows[id].cells[13].innerHTML);
+				collect(getOwner(id), cash);
+				//if megamart sell it and replace with 4 franschises
+				if (upbox.innerHTML.match(/[M]/) != null) {
+					var str = "<span>[F]</span><span>[F]</span><span>[F]</span><span>[F]</span>";
+					upbox.innerHTML = upbox.innerHTML.replace("<span>[M]</span>", str);
+				} else if (kids[0].innerHTML.match(/[F]/) != null) { //if franchise remove
+					upbox.removeChild(kids[0]);
+				}
+				updateMonoState(id);
+			} else {
+				alert("Can't sell upgrade. Have to sell the upgrades on other properties first.");
+			}
+		}
+
+		function mortgage(p, doingAuction) {
+			if (p == undefined) {
+				//getCurrentPlayer.
+				p = getCurrentPlayer();
+			}
+			var mpropview = get('mpropview');
+			var mplayer = get('mplayer');
+			mplayer.innerHTML = p;
+			// display list of deeds they can mortgage. copy logic from trade window
+			var proplist = makeMortgageList(p); // list of mortgagble deeds
+			mpropview.innerHTML = proplist;
+			setVisible('mortgagewindow');
+		}
+
+		function finishMortgage() {
+			var mpropview = get('mpropview');
+			var mplayer = get('mplayer');
+			setHidden('mortgagewindow');
+			mpropview.innerHTML = "";
+			mplayer.innerHTML = "";
+			updateTurnPanel();
+		}
+
+		function mortgageDeed(id) {
+			//check there areno upgrades.
+			var deed = globals.deedstable.rows[id];
+
+			if (deed.monostate < 1 || deed.monostate == undefined) {
+				var cash = parseInt(deed.cells[12].innerHTML);
+				deed.mortgaged = true;
+				collect(getOwner(id), cash);
+				setColor(id, 'rgb(200,200,200)');
+			} else {
+				alert("Can't Mortgage. Sell Upgrades First");
+			}
+		}
+
+		function startSellUpgrade(p) {
+			if (p == undefined) {
+				p = getCurrentPlayer();
+			}
+
+			var suppropview = get('suppropview');
+			var supplayer = get('supplayer');
+			supplayer.innerHTML = p;
+			// display list of deeds they can mortgage. copy logic from trade window
+			var supproplist = makeSellUpgradeList(p); // list of upgradeable deeds
+			suppropview.innerHTML = supproplist;
+			setVisible('supgradewindow');
+		}
+
+		function finishSellUpgrade() {
+			var suppropview = get('suppropview');
+			var supplayer = get('supplayer');
+			setHidden('supgradewindow');
+			suppropview.innerHTML = "";
+			supplayer.innerHTML = "";
+			updateTurnPanel();
+		}
+
+		function makeSellUpgradeList(pid) {
+			//build list items with pid and sid built into id
+			var html = '<ul >';
+			for (var i = 1; i < 40; i++) {
+				var deed = globals.deedstable.rows[i];
+				var property = get(i + 'deed');
+				if (pid == getOwner(i) && property.monostate > 0) {
+					//add to list
+					var id = pid + 'deed' + i;
+					var t = get(i + 'title').innerHTML;
+					var color = getColor(getColorId(i));
+					html += '<li onclick="sellUpgrade(' + i + ');" id="' + id + '"><span   >' + t + '</span></li>';
+				}
+			}
+			html += "</ul>";
+			return html;
+		}
+
+		function upgrade() {
+			var p = getCurrentPlayer();
+			var uppropview = get('uppropview');
+			var upplayer = get('upplayer');
+			upplayer.innerHTML = p;
+			// display list of deeds they can mortgage. copy logic from trade window
+			var upproplist = makeUpgradeList(p); // list of upgradeable deeds
+			uppropview.innerHTML = upproplist;
+			setVisible('upgradewindow');
+		}
+		function makeUpgradeList(pid) {
+			//build list items with pid and sid built into id
+			var html = '<ul >';
+			for (i = 1; i < 40; i++) {
+				var deed = globals.deedstable.rows[i];
+				var property = get(i + 'deed');
+				if (pid == getOwner(i) && !deed.mortgaged && property.monostate >= 0) {
+					//add to list
+					id = pid + 'deed' + i;
+					t = get(i + 'title').innerHTML;
+					color = getColor(getColorId(i));
+					html += '<li onclick="buyUpgrade(' + i + ');" id="' + id + '"><span   >' + t + '</span></li>';
+				}
+			}
+			html += "</ul>";
+			return html;
+		}
+
+
+		function finishUpgrade() {
+			var uppropview = get('uppropview');
+			var upplayer = get('upplayer');
+			setHidden('upgradewindow');
+			uppropview.innerHTML = "";
+			upplayer.innerHTML = "";
+			updateTurnPanel();
+		}
+
+		function unMortgage() {
+			//getCurrentPlayer.
+			var p = getCurrentPlayer();
+			var umpropview = get('umpropview');
+			var umplayer = get('umplayer');
+			umplayer.innerHTML = p;
+			// display list of deeds they can mortgage. copy logic from trade window
+			var uproplist = makeUnMortgageList(p); // list of mortgagble deeds
+			umpropview.innerHTML = uproplist;
+			setVisible('umortgagewindow');
+		}
+
+		function finishUnMortgage() {
+			var umpropview = get('mpropview');
+			var umplayer = get('mplayer');
+			setHidden('umortgagewindow');
+			umpropview.innerHTML = "";
+			umplayer.innerHTML = "";
+			updateTurnPanel();
+		}
+
+
+		function unMortgageDeed(id) {
+			var deed = globals.deedstable.rows[id];
+			if (deed.mortgaged == true) {
+				var cash = parseInt(deed.cells[12].innerHTML);
+				payBank(getOwner(id), cash * 1.1);
+				deed.mortgaged = false;
+				setColor(id, colortable.rows[getColorId(id)].cells[1].innerHTML);
+			} else {
+				alert("This Property isn't mortgaged.");
+			}
+
+		}
+
+		function setColor(id, colorstr) {
+			var title = get(id + 'title');
+			title.style.backgroundColor = colorstr;
+		}
+
+		function buyUpgrade(id) {
+			if (!isCurrentPlayer(getOwner(id))) {
+				alert("Not Current Player. Can't buy upgrade");
+				return;
+			}
+
+			// check if upgradeable. (1) needs to be monopoly 
+			// and (2) needs to be equal to least developed in monopoly.
+			var property = get(id + 'deed');
+			var s = parseInt(property.monostate);
+			if (s < 0) {// not upgradeable
+				alert("Can't upgrade.  Not a monopoly.");
+			}
+			if (leastDeveloped(id)) {
+				//allow purchase; do accounting
+				//add upgrade to space. 
+				//create a span [F] or [M].
+				var upgradebox = get(id + 'upgrade');
+				var str = "";
+				if (s == 4) {
+					var node = document.createElement('span');
+					node.innerHTML = "[M]";
+					upgradebox.appendChild(node);
+					removeFranchises(upgradebox);
+				}
+				else {
+					str = "<span>[F]<\/span>";
+					get(id + 'upgrade').innerHTML += str;
+				}
+
+				//update monostate
+				updateMonoState(id);
+				payBank(getOwner(id), getUpgradePrice(id));
+			} else {
+				alert("Can't upgrade. Need to upgrade other properties first.")
+			}
+		}
+
+		function removeFranchises(upgradebox) {
+			var kids = upgradebox.childNodes;
+			for (var i = 0; i < kids.length; i++) {
+				if (kids[i].innerHTML.match(/[F]/) != null) {
+					upgradebox.removeChild(kids[i]);
+					i--;
+				}
+			}
+		}
+
+		function getUpgradePrice(id) {
+			var deed = globals.deedstable.rows[id];
+			return parseInt(deed.cells[12].innerHTML);
+		}
+
+		function mostDeveloped(id) {
+			var deed = get(id + 'deed');
+			var most = 0;
+			for (var i = 0; i < monohash[getColorId(id)].length; i++) {
+				var d = monohash[getColorId(id)][i]; // get deedid in monopoly.
+				var s = parseInt(get(d + 'deed').monostate);
+				if (s > most) {
+					most = s;
+				}
+			}
+			if (most == parseInt(deed.monostate)) {
+				return true;
+			} else { return false; }
+		}
+
+		function leastDeveloped(id) {
+			// use mono hash to grab each deed and monostate
+			// Check if the least
+			var deed = get(id + 'deed');
+			var least = 5;
+			for (var i = 0; i < monohash[getColorId(id)].length; i++) {
+				var d = monohash[getColorId(id)][i]; // get deedid in monopoly.
+				var s = parseInt(get(d + 'deed').monostate);
+				if (s < least) {
+					least = s;
+				}
+			}
+			if (least == parseInt(deed.monostate)) {
+				return true;
+			} else { return false; }
+		}
+
+		function getOwner(id) {
+			//need a better catch for non-owned cards.
+			var owned = get(id + "own");
+			var toP = '';
+			if (owned == null) { return ''; }
+			if (owned.firstChild != null) {
+				try {
+					toP = owned.firstChild.innerHTML;
+					toP = stringFilter(toP);
+				} catch (e) {
+					return '';
+				}
+				return toP;
+			} else { return ''; }
+		}
+
+
+		function stringFilter(input) {
+			var s = input;
+			var filteredValues = "[]";     // Characters stripped out
+			var i;
+			var returnString = "";
+			for (i = 0; i < s.length; i++) {  // Search through string and append to unfiltered values to returnString.
+				var c = s.charAt(i);
+				if (filteredValues.indexOf(c) == -1) returnString += c;
+			}
+			return returnString;
+		}
+
+
+		function removeOwner(id) {
+			setOwner(id, '');
+		}
+
+		function setOwner(deedid, playerid) {
+			var owner = get(deedid + 'own');
+			owner.innerHTML = "<span>\[" + playerid + "\]<\/span>";
+		}
+
+		function makeMonopoly(colorid, owner) {
+			// turn deeds in monohash[colorid] into a monopoly owned by owner
+			for (i = 0; i < globals.monohash[colorid].length; i++) {
+				id = globals.monohash[colorid][i];
+				get(id + 'deed').monostate = 0;
+				setOwner(id, owner);
+			}
+		}
+
+
+		function incomeTax(p) {
+			var score = parseInt(get(p + 'score').innerHTML);
+			var assets = score;
+			//find each property owned by the player.
+			for (var i = 1; i < globals.deedstable.rows.length; i++) {
+				var owner = getOwner(i);
+				if (owner == p) {
+					assets += parseInt(globals.deedstable.rows[i].cells[5]);
+				}
+			}
+			var tax = 200;
+			if (assets < 2000) { tax = 0.1 * assets; }
+
+			alert(p + " pays $" + tax + " for income tax");
+			payBank(p, tax);
+		}
+
+
+		function collect(player, cash) {
+			var pscore = parseInt(get(player + 'score').innerHTML);
+			var bscore = parseInt(get('bankscore').innerHTML);
+			pscore += cash;
+			bscore -= cash;
+			get(player + 'score').innerHTML = pscore;
+			get('bankscore').innerHTML = bscore;
+
+		}
+
+		function payPlayer(fromP, toP, cash, showmsg) {
+			if (fromP == toP) { return; }
+			var f = parseInt(get(fromP + 'score').innerHTML);
+			var t = parseInt(get(toP + 'score').innerHTML);
+			if (isNaN(cash)) { throw ("Cash is not number: " + cash); }
+			if (isNaN(t)) { throw ("Invalid To player score: " + t); }
+			if (isNaN(f)) { throw ("Invalid From player score: " + f); }
+			t += cash;
+			f -= cash;
+			if (showmsg == undefined || showmsg) alert("Player " + fromP + " pays $" + cash + " to Player " + toP);
+			get(toP + 'score').innerHTML = t;
+			get(fromP + 'score').innerHTML = f;
+		}
+
+		function villagercard(token, cardid) {
+			setHidden(cardid + 'villagercard');
+			doCard(globals.villagertable.rows[cardid], token, cardid);
+		}
+		function newscard(token, cardid) {
+			setHidden(cardid + 'newscard');
+			doCard(globals.newstable.rows[cardid], token, cardid);
+		}
+		function doGo(player) {
+			collect(player, 200);
+			alert(player + " gets $200 for passing Go");
+		}
+		function doCard(card, token, cardid) {
+			// var p      = get(token+'token');
+			var p = get(token);
+			var pscore = parseInt(get(token + 'score').innerHTML);
+			var okGo = parseInt(card.cells[12].innerHTML);
+
+			//collect
+			var cash = parseInt(card.cells[2].innerHTML);
+			if (!isNaN(cash)) { collect(token, cash); }
+
+			//payBank
+			cash = parseInt(card.cells[3].innerHTML);
+			if (!isNaN(cash)) { payBank(token, cash); }
+
+			//collecteachplayer
+			cash = parseInt(card.cells[4].innerHTML);
+			if (!isNaN(cash)) {
+				for (var i = 0; i < globals.dmov.player.length; i++) {
+					if (token != globals.dmov.player[i].value) {
+						payPlayer(globals.dmov.player[i].value, token, cash);
+					}
+				}
+			}
+
+			//payeachplayer
+			cash = parseInt(card.cells[5].innerHTML);
+			if (!isNaN(cash)) {
+				for (i = 0; i < globals.dmov.player.length; i++) {
+					if (token != globals.dmov.player[i].value) {
+						payPlayer(token, globals.dmov.player[i].value, cash);
+					}
+				}
+			}
+
+			// move the player a number of spaces. Can be negative, eg 'Go back 3 spaces'
+			var spaces = parseInt(card.cells[6].innerHTML);
+			if (!isNaN(spaces)) { move(spaces, okGo); return; }  //should I return here? can't do multiple moves on one card anyway.
+
+			// move player to specific place, if more than one then pick closest; eg. move to nearest utility 
+			var spaces = card.cells[7].innerHTML.split(',');
+			var c = getCurrentSpace(token);
+			var newid = 100;
+			//find the closest space ahead of the person
+			//this is an ordered array
+			for (i = 0; i < spaces.length; i++) {
+				var m = parseInt(spaces[i]);
+				if (m > c) {
+					// since it's an ordered array of space indices then the first greater is the one.
+					newid = m;
+					break;
+				}
+			}
+			// if none of them were larger that means the closest is past GO.
+			if (newid == 100) { newid = parseInt(spaces[0]); }
+
+
+			if (!isNaN(newid)) {
+				// get current location
+				var c = getCurrentSpace(token);
+				var m = newid - c;
+				if (m < 0) { m += 40; }
+				var roll = [m, 0];
+				move(roll, okGo);  // this could cause an infinite for loop. // will have to guard against that.
+				return;
+			}
+
+			// add up per franchise/megamart costs
+			var perfran = parseInt(card.cells[8].innerHTML);
+			var permega = parseInt(card.cells[9].innerHTML);
+
+			// pay per franchise and megamart.  hmm.... lots of accounting. 
+			// search each property for ownership by player.
+			// make 2 counts and increment with upgrade found on each property of the player
+			var francount = 0;
+			var megacount = 0;
+			if (!isNaN(perfran) && !isNaN(permega)) {
+				for (i = 1; i < globals.deedstable.rows.length; i++) {
+					var owner = getOwner(i);
+					if (owner == token) {
+						var upgrades = get(i + 'upgrade');
+						for (j = 0; j < upgrades.childNodes.length; j++) {
+							if (upgrades.childNodes[j].innerHTML.match("[M]") != null) {
+								megacount++;
+							}
+							if (upgrades.childNodes[j].innerHTML.match("[F]") != null) {
+								francount++;
+							}
+						}
+					}
+				}
+				//instead of forlooping unnecessarily just do the math inside function arguments.
+				payBank(token, (perfran * francount + permega * megacount));
+			}
+
+			// do rollPayment
+			// shouldn't do if unowned or owned by player
+			var c = getCurrentSpace(token);
+			var owner = getOwner(c);
+			var mult = parseInt(card.cells[10].innerHTML);
+			if (!isNaN(mult) && (owner != token) && (owner != '')) {
+				displayRollDiv();	//should get triggered on utility villager card.	
+			}
+			// do rentMultiple
+			// shouldn't do if unowned or owned by player
+			if (!isNaN(parseInt(card.cells[11].innerHTML)) && (owner != token) && (owner != '')) {
+				payRent(token, getOwner(getCurrentSpace(token)), getCurrentSpace(token), parseInt(card.cells[12].innerHTML));
+			}
+		}
+
+		function rollRent(roll) {
+			//display a div.
+			r = roll[0] + roll[1];
+			payPlayer(rollPayment.fromP, rollPayment.toP, r * rollPayment.multiple);
+			rollPayment = new Object();
+		}
+
+
+		function buildCards() {
+			// do commnews and villager all at once. 
+			// copy code from builddeeds.
+			// id+'newscard' and id+'villagercard
+			var villagerstring = "";
+			var villagertable = get('villagertable');
+			var str = "";
+			var newstable = get('newstable');
+			for (i = 1; i < globals.villagertable.rows.length; i++) {
+				card = globals.villagertable.rows[i];
+				str = "<div class=\"villager\" onclick=\"villagercard(getCurrentPlayer(), " + i + " );\" id=\'" + i + "villagercard\' >	<h2>Villager</h2>";
+				str += card.cells[1].innerHTML + "</div>";
+				villagerstring += str;
+			}
+			get('villagerbox').innerHTML = villagerstring;
+			var comstring = "";
+			for (i = 1; i < globals.newstable.rows.length; i++) {
+				var card = globals.newstable.rows[i];
+				str = "<div class=\"news\" onclick=\"newscard(getCurrentPlayer(), " + i + " );\" id=\'" + i + "newscard\' ><h2>News</h2>";
+				str += card.cells[1].innerHTML + "</div>";
+				comstring += str;
+			}
+			get('newsbox').innerHTML = comstring;
+		}
+
+		function showVillagerCard(player, cardid) {
+			if (cardid == undefined) { cardid = globals.villagerorder[globals.villagerindex]; }
+			updateTurnPanel('carding');
+			setVisible(cardid + 'villagercard');
+			// global to track current index of card queue.
+
+			globals.villagerindex++;
+			if (globals.villagerindex >= globals.villagerorder.length) { globals.villagerindex -= globals.villagerorder.length; }
+		}
+
+		function showDeed(sid) {
+			setVisible(sid + 'deed');
+		}
+
+
+		function showUpgradeCell(sid) {
+			if (get(sid + 'upgrade') != undefined) { setVisible(sid + 'upgrade'); }
+		}
+
+
+		function showNewsCard(player, cardid) {
+			if (cardid == undefined) { cardid = globals.newsorder[globals.newsindex]; }
+			updateTurnPanel('carding');
+			setVisible(cardid + 'newscard');
+			// global to track current index of card queue.
+			globals.newsindex++;
+			if (globals.newsindex >= globals.newsorder.length) { globals.newsindex -= globals.newsorder.length; }
+		}
+
+		function getCurrentSpace(player) {
+			//var token = get('token'+player);
+			var token = get(player);
+			var id = token.parentNode.id;
+			id = parseInt(id.replace(/cage/, ""));
+			return id;
+		}
+
+		// need function to manage payments determined by rolls like 'advance token to nearest utility/railroad'
+		function prepPayment(fromP, toP, card) {
+			globals.rollPayment.toP = toP;
+			globals.rollPayment.fromP = fromP;
+			globals.rollPayment.multiple = parseInt(card.cells[10].innerHTML);
+		}
+
+		function displayRollDiv() {
+			setVisible('rollbox');
+		}
+
+	</script>
+
+	<!--
+playback timings (ms):
+  exclusion.robots: 0.428
+  load_resource: 115.097
+  esindex: 0.017
+  exclusion.robots.policy: 0.412
+  RedisCDXSource: 408.309
+  CDXLines.iter: 12.059 (3)
+  PetaboxLoader3.datanode: 322.965 (4)
+  PetaboxLoader3.resolve: 92.594
+  captures_list: 1245.739
+  LoadShardBlock: 822.312 (3)
+-->
+</body>
+
+</html>
