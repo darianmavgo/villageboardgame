@@ -20,4 +20,11 @@ The original board matched the 40 spaces of the original Monopoly design.  I dow
 
 
 * To restore the original gameplay, we simply need to update the image links to assets/image.gif instead of the previous path.  
-# Todo 
+# How to change images for each tile
+Add image URL in each object in monopoly.js
+In techopoly\client\src\Card.js uncomment backgroundImage on line 26, and comment backgroundImage on line 30
+Comment the paragraph on line 37
+<p style={{textAlign:'center',width:'100%',position:"absolute",marginTop:"40px",fontWeight:"600",padding:"10px"}}>{this.props.store.game.board[this.props.position].name}</p>
+In terminal go to techopoly\client and run the command npm run build
+------------------------------------------------------------------------------------------------------------------------------------------------
+Then check the boxes, if the image does not show then add height and width of div on line 23. again run the command npm run build
